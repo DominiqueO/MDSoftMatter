@@ -1,0 +1,2336 @@
+ Parameter: R <- "5655"
+1
+                 Chemistry at HARvard Macromolecular Mechanics
+           (CHARMM) - Developmental Version 41b1     August 15, 2016            
+       Copyright(c) 1984-2014  President and Fellows of Harvard College
+                              All Rights Reserved
+     Current operating system: Linux-3.10.0-693.2.2.el7.x86_64(x86_64)@pc-s     
+                 Created on 12/21/17 at 15:20:20 by user: ostermayer  
+
+            Maximum number of ATOMS:    360720, and RESidues:      120240
+ RDTITL> * LAB 9: THERMODYNAMIC CALCULATIONS
+ RDTITL> * FREE ENERGY CALCULATION FOR AB -> AVA
+ RDTITL> *
+  
+ CHARMM>     
+  
+ CHARMM>    ! Read topology and parameter files
+ CHARMM>     
+  
+ CHARMM>    OPEN UNIT 1 READ FORMmatted NAME data/topo.inp
+ VOPEN> Attempting to open::data/topo.inp::
+ OPNLGU> Unit  1 opened for READONLY access to /home/ostermayer/md/lab9/data/topo.inp
+  
+ CHARMM>    READ RTF CARD UNIT 1
+ MAINIO> Residue topology file being read from unit   1.
+ TITLE> * TOPOLOGY FILE DEFINING THE MODEL COMPOUNDS USED BY
+ TITLE> * G. PATRICK BRADY AND KIM A. SHARP, "Decomposition of Interaction
+ TITLE> * FREE ENERGIES IN PROTEINS AND OTHER COMPLEX SYSTEMS", Biopolymers...
+ TITLE> *
+  
+ CHARMM>    CLOSe UNIT 1
+ VCLOSE: Closing unit    1 with status "KEEP"
+  
+ CHARMM>     
+  
+ CHARMM>    OPEN UNIT 1 READ FORMatted NAME data/para.inp
+ VOPEN> Attempting to open::data/para.inp::
+ OPNLGU> Unit  1 opened for READONLY access to /home/ostermayer/md/lab9/data/para.inp
+  
+ CHARMM>    READ PARAmeter CARD UNIT 1
+
+          PARAMETER FILE BEING READ FROM UNIT  1
+ TITLE> * PARAMETER FILE FOR THE MODEL COMPOUNDS USED BY
+ TITLE> * G. PATRICK BRADY AND KIM A. SHARP, "Decomposition of Interaction
+ TITLE> * FREE ENERGIES IN PROTEINS AND OTHER COMPLEX SYSTEMS", Biopolymers...
+ TITLE> *
+ PARMIO> NONBOND, HBOND lists and IMAGE atoms cleared.
+  
+ CHARMM>    CLOSe UNIT 1
+ VCLOSE: Closing unit    1 with status "KEEP"
+  
+ CHARMM>     
+  
+ CHARMM>    ! Generate the AVA molecule
+ CHARMM>     
+  
+ CHARMM>    READ SEQUence CARD
+ MAINIO> Sequence information being read from unit   5.
+ RDTITL> * AMINO VALERIC ACID
+ RDTITL> *
+  
+ SEQRDR>    1
+  
+ SEQRDR>    ava
+
+          RESIDUE SEQUENCE --     1 RESIDUES
+          AVA 
+  
+ CHARMM>    GENErate ava SETUp NOANGL NODIHE
+ NO PATCHING WILL BE DONE ON THE FIRST RESIDUE
+ NO PATCHING WILL BE DONE ON THE LAST  RESIDUE
+ GENPSF> Segment   1 has been generated. Its identifier is AVA.
+ PSFSUM> PSF modified: NONBOND lists and IMAGE atoms cleared.
+ PSFSUM> Summary of the structure file counters :
+         Number of segments      =        1   Number of residues   =        1
+         Number of atoms         =        6   Number of groups     =        1
+         Number of bonds         =        5   Number of angles     =        4
+         Number of dihedrals     =        3   Number of impropers  =        0
+         Number of cross-terms   =        0
+         Number of HB acceptors  =        0   Number of HB donors  =        0
+         Number of NB exclusions =        0   Total charge =    0.00000
+  
+ CHARMM>     
+  
+ CHARMM>    ! build coordinates based on the parameters
+ CHARMM>     
+  
+ CHARMM>    IC PARAmeter
+  
+ CHARMM>    PRINt IC
+
+       INTERNAL COORDINATES
+ TITLE>  * LAB 9: THERMODYNAMIC CALCULATIONS
+ TITLE>  * FREE ENERGY CALCULATION FOR AB -> AVA
+ TITLE>  *
+
+     NUMBER OF INTERNAL COORDINATES :          3
+
+   N     I       J       K       L   R(I(J/K)) T(I(JK/KJ)) PHI   T(JKL)   R(KL)
+
+    1   1 N1    1 C2    1 C3    1 C4     1.5400  109.40  180.00  109.40   1.5400
+    2   1 C2    1 C3    1 C4    1 C5     1.5400  109.40  180.00  109.40   1.5400
+    3   1 C3    1 C4    1 C5    1 C6     1.5400  109.40  180.00  109.40   1.5400
+  
+ CHARMM>    IC SEED 1 n1 1 c2 1 c3
+  
+ CHARMM>    IC BUILd
+  
+ CHARMM>     
+  
+ CHARMM>    PRINT COORdinates
+
+          COORDINATE FILE MODULE
+ TITLE>  * LAB 9: THERMODYNAMIC CALCULATIONS
+ TITLE>  * FREE ENERGY CALCULATION FOR AB -> AVA
+ TITLE>  *
+    6
+    1    1 AVA  N1     0.00000   0.00000   0.00000 AVA  1      0.00000
+    2    1 AVA  C2     1.54000   0.00000   0.00000 AVA  1      0.00000
+    3    1 AVA  C3     2.05153   1.45256   0.00000 AVA  1      0.00000
+    4    1 AVA  C4     3.59153   1.45256   0.00000 AVA  1      0.00000
+    5    1 AVA  C5     4.10306   2.90513   0.00000 AVA  1      0.00000
+    6    1 AVA  C6     5.64306   2.90513   0.00000 AVA  1      0.00000
+  
+ CHARMM>     
+  
+ CHARMM>    ENERgy
+
+ NONBOND OPTION FLAGS: 
+     ELEC     VDW      ATOMs    RDIElec  SHIFt    VATOm    VSHIft  
+     BYGRoup  NOEXtnd  NOEWald 
+ CUTNB  = 99.000 CTEXNB =999.000 CTONNB = 20.000 CTOFNB = 30.000
+ CGONNB =  0.000 CGOFNB = 10.000
+ WMIN   =  1.500 WRNMXD =  0.500 E14FAC =  0.400 EPS    =  4.000
+ NBXMOD =      5
+ There are        0 atom  pairs and        0 atom  exclusions.
+ There are        0 group pairs and        0 group exclusions.
+ <MAKINB> with mode   5 found      9 exclusions and      3 interactions(1-4)
+ <MAKGRP> found      0 group exclusions.
+ Generating nonbond list with Exclusion mode = 5
+ == PRIMARY == SPACE FOR       13 ATOM PAIRS AND        0 GROUP PAIRS
+
+ General atom nonbond list generation found:
+        6 ATOM PAIRS WERE FOUND FOR ATOM LIST
+        0 GROUP PAIRS REQUIRED ATOM SEARCHES
+
+ENER ENR:  Eval#     ENERgy      Delta-E         GRMS
+ENER EXTERN:        VDWaals         ELEC       HBONds          ASP         USER
+ ----------       ---------    ---------    ---------    ---------    ---------
+ENER>        0     -2.26054      0.00000      0.23709
+ENER EXTERN>       -0.38007     -1.88047      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+  
+ CHARMM>     
+  
+ CHARMM>    ! Hold bonds and angles fixed at their "parameter" value
+ CHARMM>     
+  
+ CHARMM>    SHAKe BOND ANGLe PARAmeter TOLI 1.e-8 MXIT 250
+ SHKCOM> SHAKE parameters: TOL =   0.1000D-07 MXITer =    250
+
+               9 constraints will held by SHAKE.
+  
+ CHARMM>     
+  
+ CHARMM>    ENERgy
+
+ NONBOND OPTION FLAGS: 
+     ELEC     VDW      ATOMs    RDIElec  SHIFt    VATOm    VSHIft  
+     BYGRoup  NOEXtnd  NOEWald 
+ CUTNB  = 99.000 CTEXNB =999.000 CTONNB = 20.000 CTOFNB = 30.000
+ CGONNB =  0.000 CGOFNB = 10.000
+ WMIN   =  1.500 WRNMXD =  0.500 E14FAC =  0.400 EPS    =  4.000
+ NBXMOD =      5
+ There are        6 atom  pairs and       12 atom  exclusions.
+ There are        0 group pairs and        0 group exclusions.
+ Generating nonbond list with Exclusion mode = 5
+ == PRIMARY == SPACE FOR       13 ATOM PAIRS AND        0 GROUP PAIRS
+
+ General atom nonbond list generation found:
+        6 ATOM PAIRS WERE FOUND FOR ATOM LIST
+        0 GROUP PAIRS REQUIRED ATOM SEARCHES
+
+ENER ENR:  Eval#     ENERgy      Delta-E         GRMS
+ENER EXTERN:        VDWaals         ELEC       HBONds          ASP         USER
+ ----------       ---------    ---------    ---------    ---------    ---------
+ENER>        0     -2.26055      0.00001      0.00001
+ENER EXTERN>       -0.38008     -1.88047      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+  
+ CHARMM>     
+  
+ CHARMM>    ! Select atoms to be included in the calculations (all atoms)
+ CHARMM>     
+  
+ CHARMM>    BOMLev -4
+ MISCOM> Setting BOMLev < -2 is NOT a good idea.
+  
+ CHARMM>    PERTurbation SELEct ( ALL ) END
+ SELRPN>      6 atoms have been selected out of      6
+
+      ***** LEVEL  1 WARNING FROM <PERTS> *****
+      ***** Issue SHAKe command after PERT command!
+      ******************************************
+      BOMLEV ( -4) IS NOT REACHED. WRNLEV IS  5
+
+ PERT: The current PSF is saved as lambda=0 for subsequent calculations.
+ PERT: Number of atoms treated as changing:     6
+
+ NONBOND OPTION FLAGS: 
+     ELEC     VDW      ATOMs    RDIElec  SHIFt    VATOm    VSHIft  
+     BYGRoup  NOEXtnd  NOEWald 
+ CUTNB  = 99.000 CTEXNB =999.000 CTONNB = 20.000 CTOFNB = 30.000
+ CGONNB =  0.000 CGOFNB = 10.000
+ WMIN   =  1.500 WRNMXD =  0.500 E14FAC =  0.400 EPS    =  4.000
+ NBXMOD =      5
+ There are        6 atom  pairs and       12 atom  exclusions.
+ There are        0 group pairs and        0 group exclusions.
+  
+ CHARMM>    BOMLev  0
+  
+ CHARMM>     
+  
+ CHARMM>    ! Setting up the second PSF:
+ CHARMM>    ! Define the changes from the first (AVA) PSF to the second (AB) PSA:
+ CHARMM>    ! i.e., change the fifth group from CH2 to CH3 (=type 4) and the
+ CHARMM>    ! sixth group is effectively removed (defined as a dummy atom,=type 6).
+ CHARMM>     
+  
+ CHARMM>    SCALar TYPE   SET    4 SELEct ( ATOM ava 1 c5 ) END
+ SELRPN>      1 atoms have been selected out of      6
+  
+ CHARMM>    SCALar TYPE   SET    6 SELEct ( ATOM ava 1 c6 ) END
+ SELRPN>      1 atoms have been selected out of      6
+  
+ CHARMM>    SCALar CHARge SET  0.0 SELEct ( ATOM ava 1 c6 ) END
+ SELRPN>      1 atoms have been selected out of      6
+  
+ CHARMM>     
+  
+ CHARMM>    ENERgy INBFrq 1 LSTArt 1.0 LSTOp 1.0 LAMBda 1.0
+
+ NONBOND OPTION FLAGS: 
+     ELEC     VDW      ATOMs    RDIElec  SHIFt    VATOm    VSHIft  
+     BYGRoup  NOEXtnd  NOEWald 
+ CUTNB  = 99.000 CTEXNB =999.000 CTONNB = 20.000 CTOFNB = 30.000
+ CGONNB =  0.000 CGOFNB = 10.000
+ WMIN   =  1.500 WRNMXD =  0.500 E14FAC =  0.400 EPS    =  4.000
+ NBXMOD =      5
+ There are        6 atom  pairs and       12 atom  exclusions.
+ There are        0 group pairs and        0 group exclusions.
+ Generating nonbond list with Exclusion mode = 5
+ == PRIMARY == SPACE FOR       13 ATOM PAIRS AND        0 GROUP PAIRS
+ SPACE FOR       13 REACTANT ATOM PAIRS, AND        0 GROUP PAIRS.
+ SPACE FOR       13 PRODUCT  ATOM PAIRS, AND        0 GROUP PAIRS.
+
+ General atom nonbond list generation found:
+        0 ATOM PAIRS WERE FOUND FOR ATOM LIST
+        6 ATOM PAIRS WERE FOUND FOR REACTANT LIST
+        6 ATOM PAIRS WERE FOUND FOR PRODUCT  LIST
+        0 GROUP PAIRS REQUIRED ATOM SEARCHES
+
+ PERTPS> ::WARNING:: The current LSTART value   1.00000  does not match the previous LSTOP value   0.00000
+ PERTURBATION> Free energy perturbation calculation initiated.
+ PERTURBATION> PSTART=           0  PSTOP=           0
+ PERTURBATION> LSTART=    1.000000  LSTOP=    1.000000  LAMBDA=    1.000000
+ PERTURBATION> Windowing will be used.
+ PERTURBATION> TOTALS since last reset:
+PTOT>        0      0.00000      0.00000      0.00000      0.00000      0.00000
+PTOT PROP>          0.00000      0.00000      0.00000      0.00000      0.00000
+PTOT PRESS>         0.00000      0.00000      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+ PERTURBATION> Auto mode ends: PERT run terminated.
+ENER ENR:  Eval#     ENERgy      Delta-E         GRMS
+ENER EXTERN:        VDWaals         ELEC       HBONds          ASP         USER
+ ----------       ---------    ---------    ---------    ---------    ---------
+ENER>        0     -0.17772     -2.08283      0.00001
+ENER EXTERN>       -0.17772      0.00000      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+ PERTURBATION> TOTALS since last reset:
+PTOT>        0      0.00000      0.00000      0.00000      0.00000      0.00000
+PTOT PROP>          0.00000      0.00000      0.00000      0.00000      0.00000
+PTOT PRESS>         0.00000      0.00000      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+  
+ CHARMM>     
+  
+ CHARMM>    OPEN UNIT 11 WRITe FORMatted NAME scratch/junk_i2p.rst
+ VOPEN> Attempting to open::scratch/junk_i2p.rst::
+ OPNLGU> Unit 11 opened for WRITE access to /home/ostermayer/md/lab9/scratch/junk_i2p.rst
+  
+ CHARMM>    OPEN UNIT 20 READ  FORMatted NAME pert_b.inp
+ VOPEN> Attempting to open::pert_b.inp::
+ OPNLGU> Unit 20 opened for READONLY access to /home/ostermayer/md/lab9/pert_b.inp
+  
+ CHARMM>     
+  
+ CHARMM>    ! setup and run the Thermodynamic Integration loop using Langevine
+ CHARMM>    ! Dynamics.
+ CHARMM>     
+  
+ CHARMM>    SCALar FBETA SET 100 SELEct ( ALL ) END
+ SELRPN>      6 atoms have been selected out of      6
+  
+ CHARMM>     
+  
+ CHARMM>    DYNAmics LEAPfrog LANGevine START -
+ CHARMM>             NSTEp 110000  TIMEst .001  NPRInt 1000  IPRFrq 5000 -
+ CHARMM>    	 FIRStt   240. FINAlt  300. -
+ CHARMM>             PUNIt     20  ISEEd    @r  -
+ CHARMM>    	 IUNCrd    -1  IUNRead  10  IUNWrite 11  -
+ CHARMM>             ILBFrq    10  RBUFfer 0.0  TBATh   300. INBFrq 0
+ Parameter: R -> "5655"
+  IUNREA = 10         IUNWRI = 11          IUNOS = -1
+  IUNCRD = -1         IUNVEL = -1          KUNIT = -1
+ WARNING FROM DECODI - COULD NOT CONVERT STRING
+ 0.0
+ZERO WILL BE RETURNED.
+
+      ***** LEVEL  5 WARNING FROM <RNGMODSEEDS> *****
+      ***** Only one seed number specified! See random.doc for syntax.
+      ******************************************
+      BOMLEV (  0) IS NOT REACHED. WRNLEV IS  5
+
+ TITLE> * BASIC "punit" FILE FOR WINDOWING
+ TITLE> * BACKWARD DIRECTION
+ TITLE> *
+  
+  PUNIT>     
+  
+  PUNIT>    lstart 1.0 lstop 0.9 pstart  15000 pstop  20000 pwind lambda 0.95
+ PERTURBATION> Free energy perturbation calculation initiated.
+ PERTURBATION> PSTART=       15000  PSTOP=       20000
+ PERTURBATION> LSTART=    1.000000  LSTOP=    0.900000  LAMBDA=    0.950000
+ PERTURBATION> Windowing will be used.
+ DCNTRL> Langevin integration requested.
+   NSTEP =   110000    NSAVC =       10    NSAVV =       10
+  ISCALE =        0   ISCVEL =        0   IASORS =        0
+  IASVEL =        1   ICHECW =        1   NTRFRQ =        0
+  IHTFRQ =        0   IEQFRQ =        0   NPRINT =     1000
+  INBFRQ =        0   IHBFRQ =        0   IPRFRQ =     5000
+  ILBFRQ =       10   IMGFRQ =        0
+  ISVFRQ =        0   NCYCLE =       10    NSNOS =       10
+  FIRSTT =   240.000  TEMINC =     5.000  TSTRUC =  -999.000
+  FINALT =   300.000  TWINDH =    10.000  TWINDL =   -10.000
+
+  TIME STEP =  2.04548E-02 AKMA       1.00000E-03 PS
+
+  RANDOM NUM. GEN. SEED(S) = 5655 5655 5655 5655
+
+           SHAKE TOLERANCE =     0.10000E-07
+ NUMBER OF DEGREES OF FREEDOM =      9
+
+          GAUSSIAN OPTION                  IS            1
+          VELOCITIES ASSIGNED AT TEMPERATURE =    300.0000
+          SEED FOR RANDOM NUMBER GENERATOR IS:
+          SEEDS> 5655 5655 5655 5655
+
+     DETAILS ABOUT CENTRE OF MASS
+     POSITION          :    3.4726500        1.7877697       1.55081541E-16
+     VELOCITY          :   0.11424205      -0.12898592       6.06236607E-02
+     ANGULAR MOMENTUM  :    20.891534       -27.733335       -26.289850    
+     KINETIC ENERGY    :    1.9517846    
+ LNGFIL: TBATH =   300.000000  DELTA =    0.020455
+ LNGFIL: Langevin dynamics setup for       6 atoms
+ LNGFIL: RBUF =    0.000000
+ LNGFIL: SXREF =    0.000000 SYREF =    0.000000 SZREF =    0.000000
+DYNA DYN: Step         Time      TOTEner        TOTKe       ENERgy  TEMPerature
+DYNA PROP:             GRMS      HFCTote        HFCKe       EHFCor        VIRKe
+DYNA EXTERN:        VDWaals         ELEC       HBONds          ASP         USER
+DYNA PRESS:            VIRE         VIRI       PRESSE       PRESSI       VOLUme
+ ----------       ---------    ---------    ---------    ---------    ---------
+DYNA>        0      0.00000      4.58925      4.87110     -0.28186    544.72240
+DYNA PROP>         84.78312      4.80390      4.81547      0.21465    -32.20746
+DYNA EXTERN>       -0.18783     -0.09402      0.00000      0.00000      0.00000
+DYNA PRESS>         0.00000     21.47164      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+DYNA>     1000      1.00000      1.73431      1.72029      0.01402    192.37542
+DYNA PROP>        109.35682      1.65444      1.75105     -0.07987    310.91246
+DYNA INTERN>        0.00000      0.00000      0.00000      0.29747      0.00000
+DYNA EXTERN>       -0.18901     -0.09444      0.00000      0.00000      0.00000
+DYNA PRESS>         0.00000   -207.27498      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+DYNA>     2000      2.00000      1.66745      1.76727     -0.09981    197.62879
+DYNA PROP>         96.23630      1.61315      1.79931     -0.05430    -10.40217
+DYNA INTERN>        0.00000      0.00000      0.00000      0.18683      0.00000
+DYNA EXTERN>       -0.17408     -0.11256      0.00000      0.00000      0.00000
+DYNA PRESS>         0.00000      6.93478      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+DYNA>     3000      3.00000      1.23558      1.29911     -0.06353    145.27597
+DYNA PROP>         83.29395      1.16370      1.31080     -0.07188    174.22846
+DYNA INTERN>        0.00000      0.00000      0.00000      0.22490      0.00000
+DYNA EXTERN>       -0.18285     -0.10559      0.00000      0.00000      0.00000
+DYNA PRESS>         0.00000   -116.15231      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+DYNA>     4000      4.00000      4.03861      3.61799      0.42062    404.58978
+DYNA PROP>         81.70182      4.06938      3.51808      0.03077    235.47545
+DYNA INTERN>        0.00000      0.00000      0.00000      0.70651      0.00000
+DYNA EXTERN>       -0.16647     -0.11941      0.00000      0.00000      0.00000
+DYNA PRESS>         0.00000   -156.98364      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+DYNA>     5000      5.00000      1.70765      1.50758      0.20006    168.58915
+DYNA PROP>         98.93653      1.83566      1.50005      0.12801   -309.25594
+DYNA INTERN>        0.00000      0.00000      0.00000      0.48534      0.00000
+DYNA EXTERN>       -0.17461     -0.11067      0.00000      0.00000      0.00000
+DYNA PRESS>         0.00000    206.17063      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+ DYNAMC> Averages for the last 5000 steps:
+AVER DYN: Step         Time      TOTEner        TOTKe       ENERgy  TEMPerature
+AVER PROP:             GRMS      HFCTote        HFCKe       EHFCor        VIRKe
+AVER INTERN:          BONDs       ANGLes       UREY-b    DIHEdrals    IMPRopers
+AVER EXTERN:        VDWaals         ELEC       HBONds          ASP         USER
+AVER PRESS:            VIRE         VIRI       PRESSE       PRESSI       VOLUme
+ ----------       ---------    ---------    ---------    ---------    ---------
+AVER>     5000      5.00000      3.18340      2.70202      0.48138    302.15965
+AVER PROP>        103.68222      3.18312      2.70062     -0.00029      1.11424
+AVER INTERN>        0.00000      0.00000      0.00000      0.76734      0.00000
+AVER EXTERN>       -0.17836     -0.10759      0.00000      0.00000      0.00000
+AVER PRESS>         0.00000     -0.74283      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+ DYNAMC> RMS fluctuations for the last 5000 steps:
+FLUC>     5000      5.00000      1.37237      1.24723      0.55604    139.47451
+FLUC PROP>         19.57702      1.35179      1.19030      0.19814    193.56572
+FLUC INTERN>        0.00000      0.00000      0.00000      0.55565      0.00000
+FLUC EXTERN>        0.01326      0.00872      0.00000      0.00000      0.00000
+FLUC PRESS>         0.00000    129.04382      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+
+     DRIFT/STEP (LAST-TOTAL):    1.07296258E-04   1.07296258E-04
+     E AT STEP 0            :     2.9148233        2.9148233    
+     CORR. COEFFICIENT      :    0.11456603       0.11456603    
+DYNA>     6000      6.00000      5.42207      5.10795      0.31411    571.20871
+DYNA PROP>         96.12829      5.34619      4.96968     -0.07587     34.43768
+DYNA INTERN>        0.00000      0.00000      0.00000      0.58939      0.00000
+DYNA EXTERN>       -0.15883     -0.11645      0.00000      0.00000      0.00000
+DYNA PRESS>         0.00000    -22.95846      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+DYNA>     7000      7.00000      2.75365      1.64354      1.11011    183.79242
+DYNA PROP>        142.88450      3.26021      1.92210      0.50656    117.41149
+DYNA INTERN>        0.00000      0.00000      0.00000      0.36208      0.00000
+DYNA EXTERN>        0.91765     -0.16962      0.00000      0.00000      0.00000
+DYNA PRESS>         0.00000    -78.27433      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+DYNA>     8000      8.00000      6.44445      4.61645      1.82800    516.24510
+DYNA PROP>        108.40794      5.98379      4.56887     -0.46066    135.07253
+DYNA INTERN>        0.00000      0.00000      0.00000      1.10373      0.00000
+DYNA EXTERN>        0.88692     -0.16265      0.00000      0.00000      0.00000
+DYNA PRESS>         0.00000    -90.04835      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+DYNA>     9000      9.00000      1.39347      0.50571      0.88776     56.55270
+DYNA PROP>        130.32206      1.32447      0.65224     -0.06900   -109.24167
+DYNA INTERN>        0.00000      0.00000      0.00000      0.26514      0.00000
+DYNA EXTERN>        0.78560     -0.16299      0.00000      0.00000      0.00000
+DYNA PRESS>        -0.00000     72.82778      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+DYNA>    10000     10.00000      3.43790      3.04668      0.39122    340.70149
+DYNA PROP>        113.51560      3.26835      3.06766     -0.16955     96.45499
+DYNA INTERN>        0.00000      0.00000      0.00000      0.49265      0.00000
+DYNA EXTERN>        0.04847     -0.14989      0.00000      0.00000      0.00000
+DYNA PRESS>         0.00000    -64.30333      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+ DYNAMC> Averages for the last 5000 steps:
+AVER DYN: Step         Time      TOTEner        TOTKe       ENERgy  TEMPerature
+AVER PROP:             GRMS      HFCTote        HFCKe       EHFCor        VIRKe
+AVER INTERN:          BONDs       ANGLes       UREY-b    DIHEdrals    IMPRopers
+AVER EXTERN:        VDWaals         ELEC       HBONds          ASP         USER
+AVER PRESS:            VIRE         VIRI       PRESSE       PRESSI       VOLUme
+ ----------       ---------    ---------    ---------    ---------    ---------
+AVER>     5000     10.00000      3.93862      2.70318      1.23544    302.28970
+AVER PROP>        104.11850      3.93809      2.70201     -0.00053      2.11506
+AVER INTERN>        0.00000      0.00000      0.00000      1.01571      0.00000
+AVER EXTERN>        0.36718     -0.14745      0.00000      0.00000      0.00000
+AVER PRESS>         0.00000     -1.41004      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+ DYNAMC> RMS fluctuations for the last 5000 steps:
+FLUC>     5000     10.00000      1.65052      1.21978      1.14670    136.40476
+FLUC PROP>         19.60818      1.63420      1.16357      0.19903    176.14270
+FLUC INTERN>        0.00000      0.00000      0.00000      0.89629      0.00000
+FLUC EXTERN>        0.47758      0.02475      0.00000      0.00000      0.00000
+FLUC PRESS>         0.00000    117.42847      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+ DYNAMC> Averages for the last 10000 steps:
+LAVE>    10000     10.00000      3.56101      2.70260      0.85841    302.22467
+LAVE PROP>        103.90036      3.56060      2.70131     -0.00041      1.61465
+LAVE INTERN>        0.00000      0.00000      0.00000      0.89152      0.00000
+LAVE EXTERN>        0.09441     -0.12752      0.00000      0.00000      0.00000
+LAVE PRESS>         0.00000     -1.07643      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+ DYNAMC> RMS fluctuations for the last 10000 steps:
+LFLC>    10000     10.00000      1.56410      1.23358      0.97683    137.94819
+LFLC PROP>         19.59382      1.54643      1.17701      0.19859    185.06005
+LFLC INTERN>        0.00000      0.00000      0.00000      0.75595      0.00000
+LFLC EXTERN>        0.43420      0.02723      0.00000      0.00000      0.00000
+LFLC PRESS>         0.00000    123.37336      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+
+     DRIFT/STEP (LAST-TOTAL):    3.53807098E-04   1.70884000E-04
+     E AT STEP 0            :     3.0533968        2.7060990    
+     CORR. COEFFICIENT      :    0.31249414       0.31899176    
+DYNA>    11000     11.00000      3.79831      2.95371      0.84460    330.30557
+DYNA PROP>        156.48033      3.52822      3.06321     -0.27009     42.14545
+DYNA INTERN>        0.00000      0.00000      0.00000      1.09732      0.00000
+DYNA EXTERN>       -0.13110     -0.12162      0.00000      0.00000      0.00000
+DYNA PRESS>         0.00000    -28.09696      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+DYNA>    12000     12.00000      2.05482      2.09512     -0.04030    234.29214
+DYNA PROP>        122.47447      2.14670      2.11238      0.09188    181.37254
+DYNA INTERN>        0.00000      0.00000      0.00000      0.25057      0.00000
+DYNA EXTERN>       -0.17353     -0.11734      0.00000      0.00000      0.00000
+DYNA PRESS>        -0.00000   -120.91503      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+DYNA>    13000     13.00000      2.72780      2.76523     -0.03743    309.22846
+DYNA PROP>        105.90533      2.78506      2.75480      0.05726    111.86212
+DYNA INTERN>        0.00000      0.00000      0.00000      0.17914      0.00000
+DYNA EXTERN>       -0.08173     -0.13484      0.00000      0.00000      0.00000
+DYNA PRESS>         0.00000    -74.57475      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+DYNA>    14000     14.00000      2.75702      1.98630      0.77072    222.12268
+DYNA PROP>        123.96924      3.21115      2.10352      0.45413   -242.95206
+DYNA INTERN>        0.00000      0.00000      0.00000      0.90472      0.00000
+DYNA EXTERN>        0.02276     -0.15676      0.00000      0.00000      0.00000
+DYNA PRESS>         0.00000    161.96804      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+DYNA>    15000     15.00000      7.17392      5.71304      1.46088    638.87410
+DYNA PROP>         67.98480      6.90731      5.48834     -0.26661     99.87274
+DYNA INTERN>        0.00000      0.00000      0.00000      1.71105      0.00000
+DYNA EXTERN>       -0.12293     -0.12724      0.00000      0.00000      0.00000
+DYNA PRESS>        -0.00000    -66.58182      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+ DYNAMC> Averages for the last 5000 steps:
+AVER DYN: Step         Time      TOTEner        TOTKe       ENERgy  TEMPerature
+AVER PROP:             GRMS      HFCTote        HFCKe       EHFCor        VIRKe
+AVER INTERN:          BONDs       ANGLes       UREY-b    DIHEdrals    IMPRopers
+AVER EXTERN:        VDWaals         ELEC       HBONds          ASP         USER
+AVER PRESS:            VIRE         VIRI       PRESSE       PRESSI       VOLUme
+ ----------       ---------    ---------    ---------    ---------    ---------
+AVER>     5000     15.00000      3.06298      2.60748      0.45550    291.58732
+AVER PROP>        103.62430      3.06409      2.61147      0.00111      2.44147
+AVER INTERN>        0.00000      0.00000      0.00000      0.60801      0.00000
+AVER EXTERN>       -0.01831     -0.13421      0.00000      0.00000      0.00000
+AVER PRESS>        -0.00000     -1.62765      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+ DYNAMC> RMS fluctuations for the last 5000 steps:
+FLUC>     5000     15.00000      1.31033      1.22538      0.53239    137.03064
+FLUC PROP>         19.95553      1.28959      1.16904      0.19595    171.55506
+FLUC INTERN>        0.00000      0.00000      0.00000      0.51000      0.00000
+FLUC EXTERN>        0.19398      0.01881      0.00000      0.00000      0.00000
+FLUC PRESS>         0.00000    114.37004      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+ DYNAMC> Averages for the last 15000 steps:
+LAVE>    15000     15.00000      3.39500      2.67089      0.72411    298.67889
+LAVE PROP>        103.80834      3.39510      2.67137      0.00010      1.89026
+LAVE INTERN>        0.00000      0.00000      0.00000      0.79702      0.00000
+LAVE EXTERN>        0.05684     -0.12975      0.00000      0.00000      0.00000
+LAVE PRESS>         0.00000     -1.26017      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+ DYNAMC> RMS fluctuations for the last 15000 steps:
+LFLC>    15000     15.00000      1.50279      1.23167      0.87561    137.73433
+LFLC PROP>         19.71556      1.48440      1.17512      0.19771    180.67101
+LFLC INTERN>        0.00000      0.00000      0.00000      0.69681      0.00000
+LFLC EXTERN>        0.37557      0.02494      0.00000      0.00000      0.00000
+LFLC PRESS>         0.00000    120.44734      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+
+     DRIFT/STEP (LAST-TOTAL):   -1.33102543E-05   6.00428536E-06
+     E AT STEP 0            :     3.0973676        3.3500630    
+     CORR. COEFFICIENT      :   -1.48975799E-02   1.75150770E-02
+DYNA>    16000     16.00000      3.01238      2.38520      0.62718    266.73061
+DYNA PROP>         85.16791      2.90267      2.39780     -0.10971   -138.45511
+DYNA INTERN>        0.00000      0.00000      0.00000      0.90189      0.00000
+DYNA EXTERN>       -0.15929     -0.11542      0.00000      0.00000      0.00000
+DYNA PRESS>        -0.00000     92.30340      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+DYNA>    17000     17.00000      1.75016      1.52006      0.23009    169.98474
+DYNA PROP>        103.57060      1.80176      1.55805      0.05160   -120.46583
+DYNA INTERN>        0.00000      0.00000      0.00000      0.51132      0.00000
+DYNA EXTERN>       -0.16821     -0.11302      0.00000      0.00000      0.00000
+DYNA PRESS>         0.00000     80.31055      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+DYNA>    18000     18.00000      2.54999      1.62727      0.92272    181.97334
+DYNA PROP>         76.19540      2.51841      1.57661     -0.03157     54.46145
+DYNA INTERN>        0.00000      0.00000      0.00000      1.19902      0.00000
+DYNA EXTERN>       -0.15139     -0.12492      0.00000      0.00000      0.00000
+DYNA PRESS>        -0.00000    -36.30764      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+DYNA>    19000     19.00000      3.32486      2.83677      0.48809    317.22826
+DYNA PROP>        116.45179      3.29454      2.86480     -0.03032    149.66918
+DYNA INTERN>        0.00000      0.00000      0.00000      0.68399      0.00000
+DYNA EXTERN>       -0.06521     -0.13070      0.00000      0.00000      0.00000
+DYNA PRESS>        -0.00000    -99.77945      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+DYNA>    20000     20.00000      4.42475      2.74481      1.67994    306.94498
+DYNA PROP>        120.40863      4.70863      2.81892      0.28388    -75.95935
+DYNA INTERN>        0.00000      0.00000      0.00000      1.95406      0.00000
+DYNA EXTERN>       -0.15790     -0.11622      0.00000      0.00000      0.00000
+DYNA PRESS>         0.00000     50.63957      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+ DYNAMC> Averages for the last 5000 steps:
+AVER DYN: Step         Time      TOTEner        TOTKe       ENERgy  TEMPerature
+AVER PROP:             GRMS      HFCTote        HFCKe       EHFCor        VIRKe
+AVER INTERN:          BONDs       ANGLes       UREY-b    DIHEdrals    IMPRopers
+AVER EXTERN:        VDWaals         ELEC       HBONds          ASP         USER
+AVER PRESS:            VIRE         VIRI       PRESSE       PRESSI       VOLUme
+ ----------       ---------    ---------    ---------    ---------    ---------
+AVER>     5000     20.00000      3.14384      2.69977      0.44407    301.90829
+AVER PROP>        103.02892      3.14345      2.69800     -0.00040     -1.73015
+AVER INTERN>        0.00000      0.00000      0.00000      0.71225      0.00000
+AVER EXTERN>       -0.14704     -0.12114      0.00000      0.00000      0.00000
+AVER PRESS>        -0.00000      1.15344      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+ DYNAMC> RMS fluctuations for the last 5000 steps:
+FLUC>     5000     20.00000      1.30228      1.23250      0.43699    137.82763
+FLUC PROP>         19.16336      1.28130      1.17414      0.19591    174.64496
+FLUC INTERN>        0.00000      0.00000      0.00000      0.44223      0.00000
+FLUC EXTERN>        0.04073      0.00931      0.00000      0.00000      0.00000
+FLUC PRESS>         0.00000    116.42997      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+ DYNAMC> Averages for the last 20000 steps:
+LAVE>    20000     20.00000      3.33221      2.67811      0.65410    299.48624
+LAVE PROP>        103.61349      3.33219      2.67803     -0.00003      0.98515
+LAVE INTERN>        0.00000      0.00000      0.00000      0.77583      0.00000
+LAVE EXTERN>        0.00587     -0.12760      0.00000      0.00000      0.00000
+LAVE PRESS>         0.00000     -0.65677      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+ DYNAMC> RMS fluctuations for the last 20000 steps:
+LFLC>    20000     20.00000      1.45931      1.23194      0.79841    137.76476
+LFLC PROP>         19.58188      1.44045      1.17493      0.19726    179.19035
+LFLC INTERN>        0.00000      0.00000      0.00000      0.64374      0.00000
+LFLC EXTERN>        0.33764      0.02241      0.00000      0.00000      0.00000
+LFLC PRESS>         0.00000    119.46024      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+
+     DRIFT/STEP (LAST-TOTAL):   -8.00334400E-05  -1.28728706E-05
+     E AT STEP 0            :     3.3435701        3.4609203    
+     CORR. COEFFICIENT      :   -9.01570458E-02  -5.15962446E-02
+ PERTURBATION> Free energy perturbation results:
+ PERTURBATION> results, LSTART=    1.000000  LSTOP=    0.900000  LLAST=    0.950000 Number of steps used=      5000
+ PERTURBATION> result: EXPAVE=0.952881E+00 0.105132E+01 EXPFLC=0.397994E-01 0.449737E-01 DIFAVE=    0.058603 DIFFLC=    0.050370
+ PERTURBATION> TP Windowing result, EPRTOT=   -0.011285 EFORWARD=   -0.006174 EBACKWARD=    0.005110 EPREFF=   -0.034948 EPREFB=    0.034948
+ PERTURBATION> TI Windowing result, EPRTOT=   -0.011293  EFORWARD=   -0.011293 EPREF=   -0.069896
+ PERTRES> LSTART  =     1.00000 LSTOP=     0.90000 EPRTOT=    -0.01129
+          EFORWARD=    -0.01129 EPREF=    -0.06990 DIFAVE=     0.05860
+          DIFFLC  =     0.05037
+ PERTURBATION> Averages for the last     5000  steps:
+PAVE DYN: Step         Time      TOTEner        TOTKe       ENERgy  TEMPerature
+PAVE PROP:             GRMS      HFCTote        HFCKe       EHFCor        VIRKe
+PAVE INTERN:          BONDs       ANGLes       UREY-b    DIHEdrals    IMPRopers
+PAVE EXTERN:        VDWaals         ELEC       HBONds          ASP         USER
+PAVE PRESS:            VIRE         VIRI       PRESSE       PRESSI       VOLUme
+ ----------       ---------    ---------    ---------    ---------    ---------
+PAVE>     5000      0.00000     -0.01129      0.00001     -0.01129      0.00000
+PAVE PROP>          0.00000      0.00000      0.00000      0.00000      0.00000
+PAVE INTERN>        0.00000      0.00000      0.00000      0.16464      0.00000
+PAVE EXTERN>        0.06635     -0.24228      0.00000      0.00000      0.00000
+PAVE PRESS>         0.00000      0.30637      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+ PERTURBATION> Fluctuations for the last     5000  steps:
+PFLC>     5000      0.00000      0.05039      0.00151      0.05037      0.00000
+PFLC PROP>          0.00000      0.00000      0.00000      0.00000      0.00000
+PFLC INTERN>        0.00000      0.00000      0.00000      0.08698      0.00000
+PFLC EXTERN>        0.08141      0.01861      0.00000      0.00000      0.00000
+PFLC PRESS>         0.00000      0.37312      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+ PERTURBATION> TOTALS since last reset:
+PTOT>     5000      0.00000     -0.01129      0.00001     -0.01129      0.00000
+PTOT PROP>          0.00000      0.00000      0.00000      0.00000      0.00000
+PTOT INTERN>        0.00000      0.00000      0.00000      0.16464      0.00000
+PTOT EXTERN>        0.06635     -0.24228      0.00000      0.00000      0.00000
+PTOT PRESS>         0.00000      0.30637      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+  
+  PUNIT>    lstart 0.9 lstop 0.8 pstart  25000 pstop  30000 pwind lambda 0.85
+ PERTURBATION> Free energy perturbation calculation continues.
+ PERTURBATION> PSTART=       25000  PSTOP=       30000
+ PERTURBATION> LSTART=    0.900000  LSTOP=    0.800000  LAMBDA=    0.850000
+ PERTURBATION> Windowing will be used.
+DYNA>    21000     21.00000      2.55897      2.19075      0.36822    244.98604
+DYNA PROP>        107.71664      2.86698      2.20317      0.30801   -518.04855
+DYNA INTERN>        0.00000      0.00000      0.00000      0.68844      0.00000
+DYNA EXTERN>        0.11794     -0.43816      0.00000      0.00000      0.00000
+DYNA PRESS>        -0.00000    345.36570      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+DYNA>    22000     22.00000      0.62900      0.91117     -0.28217    101.89416
+DYNA PROP>         94.94342      0.86022      1.03877      0.23122     86.66274
+DYNA INTERN>        0.00000      0.00000      0.00000      0.14105      0.00000
+DYNA EXTERN>       -0.04225     -0.38098      0.00000      0.00000      0.00000
+DYNA PRESS>         0.00000    -57.77516      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+DYNA>    23000     23.00000      2.37233      2.22581      0.14652    248.90581
+DYNA PROP>        138.11573      2.11642      2.35190     -0.25591    240.43756
+DYNA INTERN>        0.00000      0.00000      0.00000      0.62300      0.00000
+DYNA EXTERN>       -0.10766     -0.36882      0.00000      0.00000      0.00000
+DYNA PRESS>        -0.00000   -160.29171      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+DYNA>    24000     24.00000      2.87283      1.94686      0.92597    217.71231
+DYNA PROP>         90.23127      2.85574      1.92056     -0.01709    214.30291
+DYNA INTERN>        0.00000      0.00000      0.00000      1.43277      0.00000
+DYNA EXTERN>       -0.19976     -0.30704      0.00000      0.00000      0.00000
+DYNA PRESS>         0.00000   -142.86861      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+DYNA>    25000     25.00000      3.41250      2.27316      1.13934    254.20104
+DYNA PROP>        164.14996      3.07642      2.52766     -0.33607     69.41760
+DYNA INTERN>        0.00000      0.00000      0.00000      1.66702      0.00000
+DYNA EXTERN>       -0.21082     -0.31686      0.00000      0.00000      0.00000
+DYNA PRESS>        -0.00000    -46.27840      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+ DYNAMC> Averages for the last 5000 steps:
+AVER DYN: Step         Time      TOTEner        TOTKe       ENERgy  TEMPerature
+AVER PROP:             GRMS      HFCTote        HFCKe       EHFCor        VIRKe
+AVER INTERN:          BONDs       ANGLes       UREY-b    DIHEdrals    IMPRopers
+AVER EXTERN:        VDWaals         ELEC       HBONds          ASP         USER
+AVER PRESS:            VIRE         VIRI       PRESSE       PRESSI       VOLUme
+ ----------       ---------    ---------    ---------    ---------    ---------
+AVER>     5000     25.00000      3.12537      2.68817      0.43720    300.61107
+AVER PROP>        103.81360      3.12563      2.68895      0.00026      2.52578
+AVER INTERN>        0.00000      0.00000      0.00000      0.84425      0.00000
+AVER EXTERN>       -0.03539     -0.37166      0.00000      0.00000      0.00000
+AVER PRESS>        -0.00000     -1.68386      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+ DYNAMC> RMS fluctuations for the last 5000 steps:
+FLUC>     5000     25.00000      1.37827      1.25648      0.50301    140.50855
+FLUC PROP>         19.48911      1.35711      1.19847      0.20060    178.70659
+FLUC INTERN>        0.00000      0.00000      0.00000      0.54899      0.00000
+FLUC EXTERN>        0.20389      0.04556      0.00000      0.00000      0.00000
+FLUC PRESS>         0.00000    119.13773      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+ DYNAMC> Averages for the last 25000 steps:
+LAVE>    25000     25.00000      3.29084      2.68013      0.61072    299.71120
+LAVE PROP>        103.65351      3.29087      2.68021      0.00003      1.29328
+LAVE INTERN>        0.00000      0.00000      0.00000      0.78951      0.00000
+LAVE EXTERN>       -0.00238     -0.17641      0.00000      0.00000      0.00000
+LAVE PRESS>         0.00000     -0.86219      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+ DYNAMC> RMS fluctuations for the last 25000 steps:
+LFLC>    25000     25.00000      1.44584      1.23689      0.75372    138.31860
+LFLC PROP>         19.56352      1.42656      1.17968      0.19794    179.09477
+LFLC INTERN>        0.00000      0.00000      0.00000      0.62653      0.00000
+LFLC EXTERN>        0.31589      0.10172      0.00000      0.00000      0.00000
+LFLC PRESS>         0.00000    119.39651      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+
+     DRIFT/STEP (LAST-TOTAL):   -1.64617071E-05  -1.46541940E-05
+     E AT STEP 0            :     3.1667958        3.4740596    
+     CORR. COEFFICIENT      :   -1.75081622E-02  -7.41345583E-02
+DYNA>    26000     26.00000      3.04447      2.89456      0.14991    323.69057
+DYNA PROP>         98.71141      2.92811      2.87734     -0.11636    -50.84305
+DYNA INTERN>        0.00000      0.00000      0.00000      0.65858      0.00000
+DYNA EXTERN>       -0.20939     -0.29928      0.00000      0.00000      0.00000
+DYNA PRESS>         0.00000     33.89537      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+DYNA>    27000     27.00000      2.32280      2.08790      0.23490    233.48465
+DYNA PROP>         86.75754      2.20529      2.06938     -0.11752    -19.54527
+DYNA INTERN>        0.00000      0.00000      0.00000      0.73103      0.00000
+DYNA EXTERN>       -0.21045     -0.28567      0.00000      0.00000      0.00000
+DYNA PRESS>        -0.00000     13.03018      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+DYNA>    28000     28.00000      2.32958      1.44579      0.88379    161.67870
+DYNA PROP>         80.29430      2.54109      1.45093      0.21151    -85.19195
+DYNA INTERN>        0.00000      0.00000      0.00000      1.40403      0.00000
+DYNA EXTERN>       -0.21005     -0.31019      0.00000      0.00000      0.00000
+DYNA PRESS>         0.00000     56.79464      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+DYNA>    29000     29.00000      2.29095      1.89896      0.39199    212.35591
+DYNA PROP>        111.57018      2.20633      1.93780     -0.08462   -136.33002
+DYNA INTERN>        0.00000      0.00000      0.00000      0.89925      0.00000
+DYNA EXTERN>       -0.19898     -0.30828      0.00000      0.00000      0.00000
+DYNA PRESS>        -0.00000     90.88668      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+DYNA>    30000     30.00000      4.73599      4.08224      0.65375    456.50624
+DYNA PROP>        145.28639      4.77232      3.99988      0.03633   -257.34159
+DYNA INTERN>        0.00000      0.00000      0.00000      1.15652      0.00000
+DYNA EXTERN>       -0.21370     -0.28908      0.00000      0.00000      0.00000
+DYNA PRESS>         0.00000    171.56106      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+ DYNAMC> Averages for the last 5000 steps:
+AVER DYN: Step         Time      TOTEner        TOTKe       ENERgy  TEMPerature
+AVER PROP:             GRMS      HFCTote        HFCKe       EHFCor        VIRKe
+AVER INTERN:          BONDs       ANGLes       UREY-b    DIHEdrals    IMPRopers
+AVER EXTERN:        VDWaals         ELEC       HBONds          ASP         USER
+AVER PRESS:            VIRE         VIRI       PRESSE       PRESSI       VOLUme
+ ----------       ---------    ---------    ---------    ---------    ---------
+AVER>     5000     30.00000      3.12083      2.57645      0.54438    288.11741
+AVER PROP>        103.33639      3.12201      2.58011      0.00118     -1.59725
+AVER INTERN>        0.00000      0.00000      0.00000      1.05342      0.00000
+AVER EXTERN>       -0.20565     -0.30340      0.00000      0.00000      0.00000
+AVER PRESS>        -0.00000      1.06483      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+ DYNAMC> RMS fluctuations for the last 5000 steps:
+FLUC>     5000     30.00000      1.39025      1.23210      0.73149    137.78218
+FLUC PROP>         19.73438      1.37139      1.17534      0.19495    203.56918
+FLUC INTERN>        0.00000      0.00000      0.00000      0.73800      0.00000
+FLUC EXTERN>        0.01268      0.01754      0.00000      0.00000      0.00000
+FLUC PRESS>         0.00000    135.71279      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+ DYNAMC> Averages for the last 30000 steps:
+LAVE>    30000     30.00000      3.26251      2.66285      0.59966    297.77890
+LAVE PROP>        103.60066      3.26273      2.66353      0.00022      0.81152
+LAVE INTERN>        0.00000      0.00000      0.00000      0.83350      0.00000
+LAVE EXTERN>       -0.03626     -0.19757      0.00000      0.00000      0.00000
+LAVE PRESS>        -0.00000     -0.54102      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+ DYNAMC> RMS fluctuations for the last 30000 steps:
+LFLC>    30000     30.00000      1.43812      1.23670      0.75047    138.29685
+LFLC PROP>         19.59246      1.41891      1.17955      0.19744    183.40395
+LFLC INTERN>        0.00000      0.00000      0.00000      0.65389      0.00000
+LFLC EXTERN>        0.29819      0.10447      0.00000      0.00000      0.00000
+LFLC PRESS>         0.00000    122.26930      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+
+     DRIFT/STEP (LAST-TOTAL):    1.22038984E-04  -1.26061053E-05
+     E AT STEP 0            :     2.8168524        3.4518287    
+     CORR. COEFFICIENT      :    0.12844508      -7.69407087E-02
+ PERTURBATION> Free energy perturbation results:
+ PERTURBATION> results, LSTART=    0.900000  LSTOP=    0.800000  LLAST=    0.850000 Number of steps used=      5000
+ PERTURBATION> result: EXPAVE=0.107562E+01 0.936852E+00 EXPFLC=0.950611E-01 0.811803E-01 DIFAVE=   -0.082316 DIFFLC=    0.104449
+ PERTURBATION> TP Windowing result, EPRTOT=   -0.056139 EFORWARD=   -0.024713 EBACKWARD=    0.020141 EPREFF=    0.018746 EPREFB=   -0.018746
+ PERTURBATION> TI Windowing result, EPRTOT=   -0.056117  EFORWARD=   -0.044824 EPREF=    0.037492
+ PERTRES> LSTART  =     0.90000 LSTOP=     0.80000 EPRTOT=    -0.05612
+          EFORWARD=    -0.04482 EPREF=     0.03749 DIFAVE=    -0.08232
+          DIFFLC  =     0.10445
+ PERTURBATION> Averages for the last     5000  steps:
+PAVE DYN: Step         Time      TOTEner        TOTKe       ENERgy  TEMPerature
+PAVE PROP:             GRMS      HFCTote        HFCKe       EHFCor        VIRKe
+PAVE INTERN:          BONDs       ANGLes       UREY-b    DIHEdrals    IMPRopers
+PAVE EXTERN:        VDWaals         ELEC       HBONds          ASP         USER
+PAVE PRESS:            VIRE         VIRI       PRESSE       PRESSI       VOLUme
+ ----------       ---------    ---------    ---------    ---------    ---------
+PAVE>     5000      0.00000     -0.04482     -0.00005     -0.04482      0.00000
+PAVE PROP>          0.00000      0.00000      0.00000      0.00000      0.00000
+PAVE INTERN>        0.00000      0.00000      0.00000      0.17393      0.00000
+PAVE EXTERN>       -0.01649     -0.20226      0.00000      0.00000      0.00000
+PAVE PRESS>         0.00000     -0.10965      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+ PERTURBATION> Fluctuations for the last     5000  steps:
+PFLC>     5000      0.00000      0.10448      0.00158      0.10445      0.00000
+PFLC PROP>          0.00000      0.00000      0.00000      0.00000      0.00000
+PFLC INTERN>        0.00000      0.00000      0.00000      0.10896      0.00000
+PFLC EXTERN>        0.00760      0.01169      0.00000      0.00000      0.00000
+PFLC PRESS>         0.00000      0.04445      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+ PERTURBATION> TOTALS since last reset:
+PTOT>     5000      0.00000     -0.05612     -0.00004     -0.05612      0.00000
+PTOT PROP>          0.00000      0.00000      0.00000      0.00000      0.00000
+PTOT INTERN>        0.00000      0.00000      0.00000      0.33857      0.00000
+PTOT EXTERN>        0.04986     -0.44455      0.00000      0.00000      0.00000
+PTOT PRESS>         0.00000      0.19672      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+  
+  PUNIT>    lstart 0.8 lstop 0.7 pstart  35000 pstop  40000 pwind lambda 0.75
+ PERTURBATION> Free energy perturbation calculation continues.
+ PERTURBATION> PSTART=       35000  PSTOP=       40000
+ PERTURBATION> LSTART=    0.800000  LSTOP=    0.700000  LAMBDA=    0.750000
+ PERTURBATION> Windowing will be used.
+DYNA>    31000     31.00000      1.76505      1.61448      0.15058    180.54259
+DYNA PROP>        107.30955      1.81027      1.62756      0.04522   -118.45347
+DYNA INTERN>        0.00000      0.00000      0.00000      0.87266      0.00000
+DYNA EXTERN>       -0.22232     -0.49977      0.00000      0.00000      0.00000
+DYNA PRESS>         0.00000     78.96898      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+DYNA>    32000     32.00000      3.85720      3.77224      0.08496    421.83967
+DYNA PROP>        104.36917      3.87027      3.74204      0.01308   -359.07282
+DYNA INTERN>        0.00000      0.00000      0.00000      0.82617      0.00000
+DYNA EXTERN>       -0.20622     -0.53499      0.00000      0.00000      0.00000
+DYNA PRESS>        -0.00000    239.38188      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+DYNA>    33000     33.00000      2.93669      2.23477      0.70192    249.90857
+DYNA PROP>         94.67930      2.62355      2.26850     -0.31314   -121.21794
+DYNA INTERN>        0.00000      0.00000      0.00000      1.43627      0.00000
+DYNA EXTERN>       -0.23020     -0.50415      0.00000      0.00000      0.00000
+DYNA PRESS>         0.00000     80.81196      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+DYNA>    34000     34.00000      2.22878      2.03817      0.19060    227.92356
+DYNA PROP>         86.63956      2.33228      2.02747      0.10350    -40.59150
+DYNA INTERN>        0.00000      0.00000      0.00000      0.87016      0.00000
+DYNA EXTERN>       -0.10411     -0.57544      0.00000      0.00000      0.00000
+DYNA PRESS>         0.00000     27.06100      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+DYNA>    35000     35.00000      1.80227      1.99076     -0.18849    222.62143
+DYNA PROP>        116.15348      1.88392      1.97302      0.08165    264.54914
+DYNA INTERN>        0.00000      0.00000      0.00000      0.39439      0.00000
+DYNA EXTERN>        0.07520     -0.65808      0.00000      0.00000      0.00000
+DYNA PRESS>         0.00000   -176.36609      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+ DYNAMC> Averages for the last 5000 steps:
+AVER DYN: Step         Time      TOTEner        TOTKe       ENERgy  TEMPerature
+AVER PROP:             GRMS      HFCTote        HFCKe       EHFCor        VIRKe
+AVER INTERN:          BONDs       ANGLes       UREY-b    DIHEdrals    IMPRopers
+AVER EXTERN:        VDWaals         ELEC       HBONds          ASP         USER
+AVER PRESS:            VIRE         VIRI       PRESSE       PRESSI       VOLUme
+ ----------       ---------    ---------    ---------    ---------    ---------
+AVER>     5000     35.00000      3.10566      2.63973      0.46593    295.19398
+AVER PROP>        103.66412      3.10659      2.64195      0.00093      5.77019
+AVER INTERN>        0.00000      0.00000      0.00000      1.16456      0.00000
+AVER EXTERN>       -0.15336     -0.54528      0.00000      0.00000      0.00000
+AVER PRESS>         0.00000     -3.84679      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+ DYNAMC> RMS fluctuations for the last 5000 steps:
+FLUC>     5000     35.00000      1.37647      1.19746      0.64247    133.90833
+FLUC PROP>         19.55047      1.35699      1.14098      0.19781    193.46736
+FLUC INTERN>        0.00000      0.00000      0.00000      0.66980      0.00000
+FLUC EXTERN>        0.13413      0.05383      0.00000      0.00000      0.00000
+FLUC PRESS>         0.00000    128.97824      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+ DYNAMC> Averages for the last 35000 steps:
+LAVE>    35000     35.00000      3.24010      2.65954      0.58056    297.40963
+LAVE PROP>        103.60972      3.24042      2.66044      0.00032      1.51990
+LAVE INTERN>        0.00000      0.00000      0.00000      0.88079      0.00000
+LAVE EXTERN>       -0.05299     -0.24725      0.00000      0.00000      0.00000
+LAVE PRESS>         0.00000     -1.01327      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+ DYNAMC> RMS fluctuations for the last 35000 steps:
+LFLC>    35000     35.00000      1.43053      1.23120      0.73750    137.68146
+LFLC PROP>         19.58648      1.41129      1.17414      0.19749    184.88326
+LFLC INTERN>        0.00000      0.00000      0.00000      0.66633      0.00000
+LFLC EXTERN>        0.28367      0.15676      0.00000      0.00000      0.00000
+LFLC PRESS>         0.00000    123.25551      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+
+     DRIFT/STEP (LAST-TOTAL):    2.34126086E-05  -1.11479065E-05
+     E AT STEP 0            :     3.0480451        3.4355187    
+     CORR. COEFFICIENT      :    2.49029959E-02  -7.98094389E-02
+DYNA>    36000     36.00000      4.06124      3.55299      0.50825    397.32083
+DYNA PROP>         89.57326      4.00000      3.44688     -0.06123    -28.28478
+DYNA INTERN>        0.00000      0.00000      0.00000      1.21610      0.00000
+DYNA EXTERN>       -0.15135     -0.55650      0.00000      0.00000      0.00000
+DYNA PRESS>        -0.00000     18.85652      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+DYNA>    37000     37.00000      3.23043      0.60873      2.62170     68.07283
+DYNA PROP>         92.39780      3.28191      0.67256      0.05148    -31.29372
+DYNA INTERN>        0.00000      0.00000      0.00000      3.34927      0.00000
+DYNA EXTERN>       -0.19297     -0.53461      0.00000      0.00000      0.00000
+DYNA PRESS>         0.00000     20.86248      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+DYNA>    38000     38.00000      2.02379      1.97728      0.04651    221.11415
+DYNA PROP>        120.95648      2.13678      1.95645      0.11299    371.20078
+DYNA INTERN>        0.00000      0.00000      0.00000      0.73189      0.00000
+DYNA EXTERN>       -0.10890     -0.57649      0.00000      0.00000      0.00000
+DYNA PRESS>        -0.00000   -247.46719      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+DYNA>    39000     39.00000      1.57031      1.53871      0.03161    172.06955
+DYNA PROP>        141.92745      1.28001      1.69490     -0.29031   -166.23397
+DYNA INTERN>        0.00000      0.00000      0.00000      0.66578      0.00000
+DYNA EXTERN>        0.03030     -0.66448      0.00000      0.00000      0.00000
+DYNA PRESS>        -0.00000    110.82265      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+DYNA>    40000     40.00000      5.22884      4.96084      0.26801    554.75724
+DYNA PROP>        106.29749      4.86068      4.84949     -0.36816     -4.60703
+DYNA INTERN>        0.00000      0.00000      0.00000      0.26458      0.00000
+DYNA EXTERN>        0.71878     -0.71536      0.00000      0.00000      0.00000
+DYNA PRESS>         0.00000      3.07135      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+ DYNAMC> Averages for the last 5000 steps:
+AVER DYN: Step         Time      TOTEner        TOTKe       ENERgy  TEMPerature
+AVER PROP:             GRMS      HFCTote        HFCKe       EHFCor        VIRKe
+AVER INTERN:          BONDs       ANGLes       UREY-b    DIHEdrals    IMPRopers
+AVER EXTERN:        VDWaals         ELEC       HBONds          ASP         USER
+AVER PRESS:            VIRE         VIRI       PRESSE       PRESSI       VOLUme
+ ----------       ---------    ---------    ---------    ---------    ---------
+AVER>     5000     40.00000      3.25620      2.66603      0.59017    298.13498
+AVER PROP>        103.39829      3.25591      2.66589     -0.00029      1.92047
+AVER INTERN>        0.00000      0.00000      0.00000      1.28164      0.00000
+AVER EXTERN>       -0.11079     -0.58068      0.00000      0.00000      0.00000
+AVER PRESS>         0.00000     -1.28031      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+ DYNAMC> RMS fluctuations for the last 5000 steps:
+FLUC>     5000     40.00000      1.56145      1.24172      0.97450    138.85870
+FLUC PROP>         19.46028      1.54407      1.18432      0.19391    182.11392
+FLUC INTERN>        0.00000      0.00000      0.00000      1.00342      0.00000
+FLUC EXTERN>        0.12134      0.05170      0.00000      0.00000      0.00000
+FLUC PRESS>         0.00000    121.40928      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+ DYNAMC> Averages for the last 40000 steps:
+LAVE>    40000     40.00000      3.24211      2.66035      0.58176    297.50030
+LAVE PROP>        103.58329      3.24236      2.66113      0.00025      1.56998
+LAVE INTERN>        0.00000      0.00000      0.00000      0.93090      0.00000
+LAVE EXTERN>       -0.06021     -0.28893      0.00000      0.00000      0.00000
+LAVE PRESS>         0.00000     -1.04665      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+ DYNAMC> RMS fluctuations for the last 40000 steps:
+LFLC>    40000     40.00000      1.44755      1.23252      0.77113    137.82937
+LFLC PROP>         19.57087      1.42857      1.17542      0.19705    184.53941
+LFLC INTERN>        0.00000      0.00000      0.00000      0.72933      0.00000
+LFLC EXTERN>        0.26947      0.18438      0.00000      0.00000      0.00000
+LFLC PRESS>         0.00000    123.02628      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+
+     DRIFT/STEP (LAST-TOTAL):   -3.27950508E-05  -7.27822286E-06
+     E AT STEP 0            :     3.3379141        3.3879285    
+     CORR. COEFFICIENT      :   -3.06563273E-02  -5.88291246E-02
+ PERTURBATION> Free energy perturbation results:
+ PERTURBATION> results, LSTART=    0.800000  LSTOP=    0.700000  LLAST=    0.750000 Number of steps used=      5000
+ PERTURBATION> result: EXPAVE=0.921523E+00 0.108832E+01 EXPFLC=0.499203E-01 0.584564E-01 DIFAVE=    0.099185 DIFFLC=    0.064349
+ PERTURBATION> TP Windowing result, EPRTOT=   -0.040206 EFORWARD=    0.007099 EBACKWARD=   -0.008834 EPREFF=   -0.041624 EPREFB=    0.041624
+ PERTURBATION> TI Windowing result, EPRTOT=   -0.040179  EFORWARD=    0.015938 EPREF=   -0.083247
+ PERTRES> LSTART  =     0.80000 LSTOP=     0.70000 EPRTOT=    -0.04018
+          EFORWARD=     0.01594 EPREF=    -0.08325 DIFAVE=     0.09919
+          DIFFLC  =     0.06435
+ PERTURBATION> Averages for the last     5000  steps:
+PAVE DYN: Step         Time      TOTEner        TOTKe       ENERgy  TEMPerature
+PAVE PROP:             GRMS      HFCTote        HFCKe       EHFCor        VIRKe
+PAVE INTERN:          BONDs       ANGLes       UREY-b    DIHEdrals    IMPRopers
+PAVE EXTERN:        VDWaals         ELEC       HBONds          ASP         USER
+PAVE PRESS:            VIRE         VIRI       PRESSE       PRESSI       VOLUme
+ ----------       ---------    ---------    ---------    ---------    ---------
+PAVE>     5000      0.00000      0.01594      0.00003      0.01594      0.00000
+PAVE PROP>          0.00000      0.00000      0.00000      0.00000      0.00000
+PAVE INTERN>        0.00000      0.00000      0.00000      0.22006      0.00000
+PAVE EXTERN>        0.02816     -0.23227      0.00000      0.00000      0.00000
+PAVE PRESS>         0.00000      0.12266      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+ PERTURBATION> Fluctuations for the last     5000  steps:
+PFLC>     5000      0.00000      0.06435      0.00120      0.06435      0.00000
+PFLC PROP>          0.00000      0.00000      0.00000      0.00000      0.00000
+PFLC INTERN>        0.00000      0.00000      0.00000      0.08804      0.00000
+PFLC EXTERN>        0.04790      0.02068      0.00000      0.00000      0.00000
+PFLC PRESS>         0.00000      0.23135      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+ PERTURBATION> TOTALS since last reset:
+PTOT>     5000      0.00000     -0.04018     -0.00001     -0.04018      0.00000
+PTOT PROP>          0.00000      0.00000      0.00000      0.00000      0.00000
+PTOT INTERN>        0.00000      0.00000      0.00000      0.55863      0.00000
+PTOT EXTERN>        0.07802     -0.67682      0.00000      0.00000      0.00000
+PTOT PRESS>         0.00000      0.31938      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+  
+  PUNIT>    lstart 0.7 lstop 0.6 pstart  45000 pstop  50000 pwind lambda 0.65
+ PERTURBATION> Free energy perturbation calculation continues.
+ PERTURBATION> PSTART=       45000  PSTOP=       50000
+ PERTURBATION> LSTART=    0.700000  LSTOP=    0.600000  LAMBDA=    0.650000
+ PERTURBATION> Windowing will be used.
+DYNA>    41000     41.00000      3.12262      1.42573      1.69688    159.43607
+DYNA PROP>        102.63821      3.07500      1.46227     -0.04762     49.56842
+DYNA INTERN>        0.00000      0.00000      0.00000      2.78000      0.00000
+DYNA EXTERN>       -0.19701     -0.88610      0.00000      0.00000      0.00000
+DYNA PRESS>         0.00000    -33.04562      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+DYNA>    42000     42.00000      5.11838      5.13865     -0.02027    574.64128
+DYNA PROP>         52.51744      5.07283      4.94060     -0.04555   -152.93437
+DYNA INTERN>        0.00000      0.00000      0.00000      0.89199      0.00000
+DYNA EXTERN>       -0.11222     -0.80004      0.00000      0.00000      0.00000
+DYNA PRESS>        -0.00000    101.95625      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+DYNA>    43000     43.00000      1.02150      0.99779      0.02371    111.57978
+DYNA PROP>         71.37695      1.08585      1.01524      0.06435   -161.33881
+DYNA INTERN>        0.00000      0.00000      0.00000      0.33224      0.00000
+DYNA EXTERN>        0.69189     -1.00042      0.00000      0.00000      0.00000
+DYNA PRESS>         0.00000    107.55920      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+DYNA>    44000     44.00000      1.44998      1.63727     -0.18730    183.09173
+DYNA PROP>        120.65717      1.41657      1.69337     -0.03341   -213.84811
+DYNA INTERN>        0.00000      0.00000      0.00000      0.59440      0.00000
+DYNA EXTERN>        0.12236     -0.90406      0.00000      0.00000      0.00000
+DYNA PRESS>         0.00000    142.56541      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+DYNA>    45000     45.00000      5.85592      5.85596     -0.00004    654.85664
+DYNA PROP>        107.94100      5.47164      5.72452     -0.38428    -67.95341
+DYNA INTERN>        0.00000      0.00000      0.00000      0.93137      0.00000
+DYNA EXTERN>       -0.12713     -0.80429      0.00000      0.00000      0.00000
+DYNA PRESS>        -0.00000     45.30228      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+ DYNAMC> Averages for the last 5000 steps:
+AVER DYN: Step         Time      TOTEner        TOTKe       ENERgy  TEMPerature
+AVER PROP:             GRMS      HFCTote        HFCKe       EHFCor        VIRKe
+AVER INTERN:          BONDs       ANGLes       UREY-b    DIHEdrals    IMPRopers
+AVER EXTERN:        VDWaals         ELEC       HBONds          ASP         USER
+AVER PRESS:            VIRE         VIRI       PRESSE       PRESSI       VOLUme
+ ----------       ---------    ---------    ---------    ---------    ---------
+AVER>     5000     45.00000      3.15204      2.74799      0.40405    307.30042
+AVER PROP>        103.56868      3.15086      2.74454     -0.00119      4.89364
+AVER INTERN>        0.00000      0.00000      0.00000      1.08254      0.00000
+AVER EXTERN>        0.22607     -0.90455      0.00000      0.00000      0.00000
+AVER PRESS>        -0.00000     -3.26243      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+ DYNAMC> RMS fluctuations for the last 5000 steps:
+FLUC>     5000     45.00000      1.41632      1.33509      0.59390    149.29940
+FLUC PROP>         19.42459      1.39491      1.27415      0.20124    174.49516
+FLUC INTERN>        0.00000      0.00000      0.00000      0.70439      0.00000
+FLUC EXTERN>        0.49433      0.07516      0.00000      0.00000      0.00000
+FLUC PRESS>         0.00000    116.33011      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+ DYNAMC> Averages for the last 45000 steps:
+LAVE>    45000     45.00000      3.23210      2.67009      0.56201    298.58920
+LAVE PROP>        103.58167      3.23219      2.67039      0.00009      1.93927
+LAVE INTERN>        0.00000      0.00000      0.00000      0.94775      0.00000
+LAVE EXTERN>       -0.02840     -0.35733      0.00000      0.00000      0.00000
+LAVE PRESS>         0.00000     -1.29285      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+ DYNAMC> RMS fluctuations for the last 45000 steps:
+LFLC>    45000     45.00000      1.44439      1.24464      0.75556    139.18460
+LFLC PROP>         19.55467      1.42516      1.18709      0.19752    183.45352
+LFLC INTERN>        0.00000      0.00000      0.00000      0.72816      0.00000
+LFLC EXTERN>        0.31590      0.26130      0.00000      0.00000      0.00000
+LFLC PRESS>         0.00000    122.30235      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+
+     DRIFT/STEP (LAST-TOTAL):   -1.60296003E-04  -6.53659075E-06
+     E AT STEP 0            :     3.5516776        3.3792700    
+     CORR. COEFFICIENT      :   -0.16586601      -5.95811911E-02
+DYNA>    46000     46.00000      3.38858      2.88380      0.50478    322.48738
+DYNA PROP>         95.96431      3.49378      2.82826      0.10520     99.67536
+DYNA INTERN>        0.00000      0.00000      0.00000      1.48011      0.00000
+DYNA EXTERN>       -0.24765     -0.72767      0.00000      0.00000      0.00000
+DYNA PRESS>        -0.00000    -66.45024      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+DYNA>    47000     47.00000      3.33028      2.84089      0.48938    317.68947
+DYNA PROP>        122.69858      3.01801      2.88473     -0.31227   -166.45291
+DYNA INTERN>        0.00000      0.00000      0.00000      1.47880      0.00000
+DYNA EXTERN>       -0.21032     -0.77910      0.00000      0.00000      0.00000
+DYNA PRESS>         0.00000    110.96861      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+DYNA>    48000     48.00000      2.12301      1.75112      0.37189    195.82256
+DYNA PROP>        121.02390      2.18932      1.79204      0.06631      6.55697
+DYNA INTERN>        0.00000      0.00000      0.00000      1.28764      0.00000
+DYNA EXTERN>       -0.14009     -0.77566      0.00000      0.00000      0.00000
+DYNA PRESS>        -0.00000     -4.37131      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+DYNA>    49000     49.00000      3.69646      2.73880      0.95766    306.27285
+DYNA PROP>        125.58067      3.27352      2.80332     -0.42294    -58.46035
+DYNA INTERN>        0.00000      0.00000      0.00000      1.89654      0.00000
+DYNA EXTERN>       -0.19576     -0.74312      0.00000      0.00000      0.00000
+DYNA PRESS>        -0.00000     38.97357      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+DYNA>    50000     50.00000      3.86341      3.56154      0.30187    398.27697
+DYNA PROP>        109.64923      3.81831      3.41454     -0.04509    -30.20027
+DYNA INTERN>        0.00000      0.00000      0.00000      1.25680      0.00000
+DYNA EXTERN>       -0.22377     -0.73116      0.00000      0.00000      0.00000
+DYNA PRESS>         0.00000     20.13351      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+ DYNAMC> Averages for the last 5000 steps:
+AVER DYN: Step         Time      TOTEner        TOTKe       ENERgy  TEMPerature
+AVER PROP:             GRMS      HFCTote        HFCKe       EHFCor        VIRKe
+AVER INTERN:          BONDs       ANGLes       UREY-b    DIHEdrals    IMPRopers
+AVER EXTERN:        VDWaals         ELEC       HBONds          ASP         USER
+AVER PRESS:            VIRE         VIRI       PRESSE       PRESSI       VOLUme
+ ----------       ---------    ---------    ---------    ---------    ---------
+AVER>     5000     50.00000      3.20319      2.70156      0.50163    302.10773
+AVER PROP>        103.47783      3.20298      2.70050     -0.00020      2.89018
+AVER INTERN>        0.00000      0.00000      0.00000      1.43530      0.00000
+AVER EXTERN>       -0.17567     -0.75800      0.00000      0.00000      0.00000
+AVER PRESS>         0.00000     -1.92679      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+ DYNAMC> RMS fluctuations for the last 5000 steps:
+FLUC>     5000     50.00000      1.40348      1.28236      0.54062    143.40293
+FLUC PROP>         19.19817      1.38284      1.22328      0.19649    188.72001
+FLUC INTERN>        0.00000      0.00000      0.00000      0.54493      0.00000
+FLUC EXTERN>        0.08304      0.04845      0.00000      0.00000      0.00000
+FLUC PRESS>         0.00000    125.81334      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+ DYNAMC> Averages for the last 50000 steps:
+LAVE>    50000     50.00000      3.22921      2.67324      0.55597    298.94105
+LAVE PROP>        103.57129      3.22927      2.67341      0.00006      2.03436
+LAVE INTERN>        0.00000      0.00000      0.00000      0.99650      0.00000
+LAVE EXTERN>       -0.04313     -0.39740      0.00000      0.00000      0.00000
+LAVE PRESS>         0.00000     -1.35624      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+ DYNAMC> RMS fluctuations for the last 50000 steps:
+LFLC>    50000     50.00000      1.44038      1.24850      0.73712    139.61616
+LFLC PROP>         19.51934      1.42101      1.19079      0.19742    183.98717
+LFLC INTERN>        0.00000      0.00000      0.00000      0.72684      0.00000
+LFLC EXTERN>        0.30406      0.27592      0.00000      0.00000      0.00000
+LFLC PRESS>         0.00000    122.65812      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+
+     DRIFT/STEP (LAST-TOTAL):   -1.05059321E-04  -5.18568738E-06
+     E AT STEP 0            :     3.4656856        3.3589173    
+     CORR. COEFFICIENT      :   -0.10965833      -5.26729527E-02
+ PERTURBATION> Free energy perturbation results:
+ PERTURBATION> results, LSTART=    0.700000  LSTOP=    0.600000  LLAST=    0.650000 Number of steps used=      5000
+ PERTURBATION> result: EXPAVE=0.998152E+00 0.100380E+01 EXPFLC=0.447892E-01 0.434894E-01 DIFAVE=    0.003377 DIFFLC=    0.052561
+ PERTURBATION> TP Windowing result, EPRTOT=   -0.009479 EFORWARD=    0.014784 EBACKWARD=   -0.015943 EPREFF=    0.013681 EPREFB=   -0.013681
+ PERTURBATION> TI Windowing result, EPRTOT=   -0.009439  EFORWARD=    0.030740 EPREF=    0.027363
+ PERTRES> LSTART  =     0.70000 LSTOP=     0.60000 EPRTOT=    -0.00944
+          EFORWARD=     0.03074 EPREF=     0.02736 DIFAVE=     0.00338
+          DIFFLC  =     0.05256
+ PERTURBATION> Averages for the last     5000  steps:
+PAVE DYN: Step         Time      TOTEner        TOTKe       ENERgy  TEMPerature
+PAVE PROP:             GRMS      HFCTote        HFCKe       EHFCor        VIRKe
+PAVE INTERN:          BONDs       ANGLes       UREY-b    DIHEdrals    IMPRopers
+PAVE EXTERN:        VDWaals         ELEC       HBONds          ASP         USER
+PAVE PRESS:            VIRE         VIRI       PRESSE       PRESSI       VOLUme
+ ----------       ---------    ---------    ---------    ---------    ---------
+PAVE>     5000      0.00000      0.03074      0.00001      0.03074      0.00000
+PAVE PROP>          0.00000      0.00000      0.00000      0.00000      0.00000
+PAVE INTERN>        0.00000      0.00000      0.00000      0.24610      0.00000
+PAVE EXTERN>        0.00121     -0.21657      0.00000      0.00000      0.00000
+PAVE PRESS>         0.00000     -0.00963      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+ PERTURBATION> Fluctuations for the last     5000  steps:
+PFLC>     5000      0.00000      0.05259      0.00145      0.05256      0.00000
+PFLC PROP>          0.00000      0.00000      0.00000      0.00000      0.00000
+PFLC INTERN>        0.00000      0.00000      0.00000      0.06105      0.00000
+PFLC EXTERN>        0.02385      0.01384      0.00000      0.00000      0.00000
+PFLC PRESS>         0.00000      0.12528      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+ PERTURBATION> TOTALS since last reset:
+PTOT>     5000      0.00000     -0.00944      0.00000     -0.00944      0.00000
+PTOT PROP>          0.00000      0.00000      0.00000      0.00000      0.00000
+PTOT INTERN>        0.00000      0.00000      0.00000      0.80473      0.00000
+PTOT EXTERN>        0.07923     -0.89339      0.00000      0.00000      0.00000
+PTOT PRESS>         0.00000      0.30975      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+  
+  PUNIT>    lstart 0.6 lstop 0.5 pstart  55000 pstop  60000 pwind lambda 0.55
+ PERTURBATION> Free energy perturbation calculation continues.
+ PERTURBATION> PSTART=       55000  PSTOP=       60000
+ PERTURBATION> LSTART=    0.600000  LSTOP=    0.500000  LAMBDA=    0.550000
+ PERTURBATION> Windowing will be used.
+DYNA>    51000     51.00000      0.75668      0.83492     -0.07824     93.36632
+DYNA PROP>        119.84158      0.78829      0.90369      0.03161    188.17108
+DYNA INTERN>        0.00000      0.00000      0.00000      0.94118      0.00000
+DYNA EXTERN>        0.05249     -1.07191      0.00000      0.00000      0.00000
+DYNA PRESS>        -0.00000   -125.44739      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+DYNA>    52000     52.00000      2.62578      2.45238      0.17340    274.24325
+DYNA PROP>         93.11822      2.59790      2.44963     -0.02788   -159.01518
+DYNA INTERN>        0.00000      0.00000      0.00000      0.97805      0.00000
+DYNA EXTERN>        0.48878     -1.29343      0.00000      0.00000      0.00000
+DYNA PRESS>         0.00000    106.01012      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+DYNA>    53000     53.00000      1.65906      1.99949     -0.34044    223.59795
+DYNA PROP>        105.85938      1.39284      2.03665     -0.26621    -57.28564
+DYNA INTERN>        0.00000      0.00000      0.00000      0.16640      0.00000
+DYNA EXTERN>        0.68512     -1.19195      0.00000      0.00000      0.00000
+DYNA PRESS>        -0.00000     38.19043      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+DYNA>    54000     54.00000      2.68843      3.02695     -0.33852    338.49554
+DYNA PROP>         88.79421      2.54082      2.96297     -0.14761    163.84139
+DYNA INTERN>        0.00000      0.00000      0.00000      0.06755      0.00000
+DYNA EXTERN>        0.81943     -1.22550      0.00000      0.00000      0.00000
+DYNA PRESS>         0.00000   -109.22759      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+DYNA>    55000     55.00000      1.48024      1.60500     -0.12475    179.48235
+DYNA PROP>         92.74310      1.45980      1.62296     -0.02044     78.58727
+DYNA INTERN>        0.00000      0.00000      0.00000      0.80275      0.00000
+DYNA EXTERN>        0.29555     -1.22306      0.00000      0.00000      0.00000
+DYNA PRESS>         0.00000    -52.39151      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+ DYNAMC> Averages for the last 5000 steps:
+AVER DYN: Step         Time      TOTEner        TOTKe       ENERgy  TEMPerature
+AVER PROP:             GRMS      HFCTote        HFCKe       EHFCor        VIRKe
+AVER INTERN:          BONDs       ANGLes       UREY-b    DIHEdrals    IMPRopers
+AVER EXTERN:        VDWaals         ELEC       HBONds          ASP         USER
+AVER PRESS:            VIRE         VIRI       PRESSE       PRESSI       VOLUme
+ ----------       ---------    ---------    ---------    ---------    ---------
+AVER>     5000     55.00000      2.98496      2.75227      0.23270    307.77851
+AVER PROP>        103.25500      2.98371      2.74806     -0.00126     -0.06884
+AVER INTERN>        0.00000      0.00000      0.00000      0.94804      0.00000
+AVER EXTERN>        0.44874     -1.16408      0.00000      0.00000      0.00000
+AVER PRESS>         0.00000      0.04589      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+ DYNAMC> RMS fluctuations for the last 5000 steps:
+FLUC>     5000     55.00000      1.36328      1.30562      0.44156    146.00427
+FLUC PROP>         19.83687      1.34127      1.24541      0.20199    177.76372
+FLUC INTERN>        0.00000      0.00000      0.00000      0.60742      0.00000
+FLUC EXTERN>        0.51813      0.09979      0.00000      0.00000      0.00000
+FLUC PRESS>         0.00000    118.50915      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+ DYNAMC> Averages for the last 55000 steps:
+LAVE>    55000     55.00000      3.20701      2.68042      0.52659    299.74446
+LAVE PROP>        103.54253      3.20695      2.68019     -0.00006      1.84316
+LAVE INTERN>        0.00000      0.00000      0.00000      0.99210      0.00000
+LAVE EXTERN>        0.00158     -0.46709      0.00000      0.00000      0.00000
+LAVE PRESS>         0.00000     -1.22878      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+ DYNAMC> RMS fluctuations for the last 55000 steps:
+LFLC>    55000     55.00000      1.43526      1.25400      0.72132    140.23194
+LFLC PROP>         19.54863      1.41571      1.19605      0.19784    183.43113
+LFLC INTERN>        0.00000      0.00000      0.00000      0.71694      0.00000
+LFLC EXTERN>        0.35840      0.34452      0.00000      0.00000      0.00000
+LFLC PRESS>         0.00000    122.28742      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+
+     DRIFT/STEP (LAST-TOTAL):   -4.66030115E-05  -6.14507090E-06
+     E AT STEP 0            :     3.1002368        3.3759409    
+     CORR. COEFFICIENT      :   -5.01507260E-02  -6.89166963E-02
+DYNA>    56000     56.00000      1.14401      1.18976     -0.04575    133.04736
+DYNA PROP>        128.72677      0.99482      1.32898     -0.14919    145.37838
+DYNA INTERN>        0.00000      0.00000      0.00000      1.11024      0.00000
+DYNA EXTERN>       -0.05255     -1.10344      0.00000      0.00000      0.00000
+DYNA PRESS>         0.00000    -96.91892      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+DYNA>    57000     57.00000      1.91234      1.28434      0.62800    143.62412
+DYNA PROP>         76.29661      1.91343      1.25450      0.00109   -202.56217
+DYNA INTERN>        0.00000      0.00000      0.00000      1.65559      0.00000
+DYNA EXTERN>        0.08592     -1.11351      0.00000      0.00000      0.00000
+DYNA PRESS>        -0.00000    135.04145      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+DYNA>    58000     58.00000      3.21412      2.41110      0.80302    269.62632
+DYNA PROP>         82.75967      3.42583      2.41733      0.21171    293.06465
+DYNA INTERN>        0.00000      0.00000      0.00000      1.29194      0.00000
+DYNA EXTERN>        0.65129     -1.14021      0.00000      0.00000      0.00000
+DYNA PRESS>        -0.00000   -195.37643      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+DYNA>    59000     59.00000      2.93626      3.25364     -0.31737    363.84556
+DYNA PROP>        119.91647      3.16402      3.30317      0.22776    307.74142
+DYNA INTERN>        0.00000      0.00000      0.00000      0.81044      0.00000
+DYNA EXTERN>       -0.27258     -0.85524      0.00000      0.00000      0.00000
+DYNA PRESS>         0.00000   -205.16095      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+DYNA>    60000     60.00000      3.61545      3.25842      0.35703    364.38028
+DYNA PROP>         99.54908      3.61065      3.23924     -0.00480   -413.90901
+DYNA INTERN>        0.00000      0.00000      0.00000      1.47974      0.00000
+DYNA EXTERN>       -0.27187     -0.85084      0.00000      0.00000      0.00000
+DYNA PRESS>        -0.00000    275.93934      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+ DYNAMC> Averages for the last 5000 steps:
+AVER DYN: Step         Time      TOTEner        TOTKe       ENERgy  TEMPerature
+AVER PROP:             GRMS      HFCTote        HFCKe       EHFCor        VIRKe
+AVER INTERN:          BONDs       ANGLes       UREY-b    DIHEdrals    IMPRopers
+AVER EXTERN:        VDWaals         ELEC       HBONds          ASP         USER
+AVER PRESS:            VIRE         VIRI       PRESSE       PRESSI       VOLUme
+ ----------       ---------    ---------    ---------    ---------    ---------
+AVER>     5000     60.00000      2.81467      2.62737      0.18730    293.81194
+AVER PROP>        103.26284      2.81530      2.62965      0.00063      3.76613
+AVER INTERN>        0.00000      0.00000      0.00000      1.09700      0.00000
+AVER EXTERN>        0.15019     -1.05988      0.00000      0.00000      0.00000
+AVER PRESS>         0.00000     -2.51075      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+ DYNAMC> RMS fluctuations for the last 5000 steps:
+FLUC>     5000     60.00000      1.35340      1.22177      0.57638    136.62672
+FLUC PROP>         19.54463      1.33294      1.16495      0.19838    180.94662
+FLUC INTERN>        0.00000      0.00000      0.00000      0.67359      0.00000
+FLUC EXTERN>        0.40998      0.13332      0.00000      0.00000      0.00000
+FLUC PRESS>         0.00000    120.63108      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+ DYNAMC> Averages for the last 60000 steps:
+LAVE>    60000     60.00000      3.17431      2.67600      0.49831    299.25008
+LAVE PROP>        103.51922      3.17431      2.67598     -0.00000      2.00341
+LAVE INTERN>        0.00000      0.00000      0.00000      1.00084      0.00000
+LAVE EXTERN>        0.01397     -0.51649      0.00000      0.00000      0.00000
+LAVE PRESS>         0.00000     -1.33561      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+ DYNAMC> RMS fluctuations for the last 60000 steps:
+LFLC>    60000     60.00000      1.43273      1.25144      0.71654    139.94466
+LFLC PROP>         19.54845      1.41315      1.19357      0.19788    183.22614
+LFLC INTERN>        0.00000      0.00000      0.00000      0.71401      0.00000
+LFLC EXTERN>        0.36529      0.37031      0.00000      0.00000      0.00000
+LFLC PRESS>         0.00000    122.15076      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+
+     DRIFT/STEP (LAST-TOTAL):    1.22433194E-04  -7.65416981E-06
+     E AT STEP 0            :     2.5091565        3.4039399    
+     CORR. COEFFICIENT      :    0.13257703      -9.38145638E-02
+ PERTURBATION> Free energy perturbation results:
+ PERTURBATION> results, LSTART=    0.600000  LSTOP=    0.500000  LLAST=    0.550000 Number of steps used=      5000
+ PERTURBATION> result: EXPAVE=0.977653E+00 0.102689E+01 EXPFLC=0.619041E-01 0.638951E-01 DIFAVE=    0.029306 DIFFLC=    0.074796
+ PERTURBATION> TP Windowing result, EPRTOT=   -0.071983 EFORWARD=   -0.032425 EBACKWARD=    0.030079 EPREFF=   -0.045898 EPREFB=    0.045898
+ PERTURBATION> TI Windowing result, EPRTOT=   -0.071929  EFORWARD=   -0.062491 EPREF=   -0.091797
+ PERTRES> LSTART  =     0.60000 LSTOP=     0.50000 EPRTOT=    -0.07193
+          EFORWARD=    -0.06249 EPREF=    -0.09180 DIFAVE=     0.02931
+          DIFFLC  =     0.07480
+ PERTURBATION> Averages for the last     5000  steps:
+PAVE DYN: Step         Time      TOTEner        TOTKe       ENERgy  TEMPerature
+PAVE PROP:             GRMS      HFCTote        HFCKe       EHFCor        VIRKe
+PAVE INTERN:          BONDs       ANGLes       UREY-b    DIHEdrals    IMPRopers
+PAVE EXTERN:        VDWaals         ELEC       HBONds          ASP         USER
+PAVE PRESS:            VIRE         VIRI       PRESSE       PRESSI       VOLUme
+ ----------       ---------    ---------    ---------    ---------    ---------
+PAVE>     5000      0.00000     -0.06249     -0.00001     -0.06249      0.00000
+PAVE PROP>          0.00000      0.00000      0.00000      0.00000      0.00000
+PAVE INTERN>        0.00000      0.00000      0.00000      0.09962      0.00000
+PAVE EXTERN>        0.07341     -0.23553      0.00000      0.00000      0.00000
+PAVE PRESS>         0.00000      0.32941      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+ PERTURBATION> Fluctuations for the last     5000  steps:
+PFLC>     5000      0.00000      0.07482      0.00151      0.07480      0.00000
+PFLC PROP>          0.00000      0.00000      0.00000      0.00000      0.00000
+PFLC INTERN>        0.00000      0.00000      0.00000      0.09186      0.00000
+PFLC EXTERN>        0.09102      0.02963      0.00000      0.00000      0.00000
+PFLC PRESS>         0.00000      0.43240      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+ PERTURBATION> TOTALS since last reset:
+PTOT>     5000      0.00000     -0.07193     -0.00001     -0.07193      0.00000
+PTOT PROP>          0.00000      0.00000      0.00000      0.00000      0.00000
+PTOT INTERN>        0.00000      0.00000      0.00000      0.90435      0.00000
+PTOT EXTERN>        0.15264     -1.12892      0.00000      0.00000      0.00000
+PTOT PRESS>         0.00000      0.63916      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+  
+  PUNIT>    lstart 0.5 lstop 0.4 pstart  65000 pstop  70000 pwind lambda 0.45
+ PERTURBATION> Free energy perturbation calculation continues.
+ PERTURBATION> PSTART=       65000  PSTOP=       70000
+ PERTURBATION> LSTART=    0.500000  LSTOP=    0.400000  LAMBDA=    0.450000
+ PERTURBATION> Windowing will be used.
+DYNA>    61000     61.00000      2.25670      2.21565      0.04104    247.77050
+DYNA PROP>        137.27619      2.15837      2.28875     -0.09833   -515.48030
+DYNA INTERN>        0.00000      0.00000      0.00000      1.39674      0.00000
+DYNA EXTERN>       -0.29482     -1.06087      0.00000      0.00000      0.00000
+DYNA PRESS>        -0.00000    343.65354      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+DYNA>    62000     62.00000      1.17860      2.47570     -1.29710    276.85044
+DYNA PROP>        142.64606      1.07761      2.48688     -0.10098   -104.96961
+DYNA INTERN>        0.00000      0.00000      0.00000      0.39954      0.00000
+DYNA EXTERN>       -0.18507     -1.51157      0.00000      0.00000      0.00000
+DYNA PRESS>        -0.00000     69.97974      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+DYNA>    63000     63.00000      5.70951      5.81110     -0.10159    649.83944
+DYNA PROP>        114.96758      5.24866      5.71743     -0.46085      8.77353
+DYNA INTERN>        0.00000      0.00000      0.00000      1.48844      0.00000
+DYNA EXTERN>        0.08775     -1.67778      0.00000      0.00000      0.00000
+DYNA PRESS>         0.00000     -5.84902      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+DYNA>    64000     64.00000      4.11928      5.06765     -0.94836    566.70123
+DYNA PROP>         85.25243      3.92737      4.91266     -0.19191     50.12706
+DYNA INTERN>        0.00000      0.00000      0.00000      1.07126      0.00000
+DYNA EXTERN>       -0.26393     -1.75570      0.00000      0.00000      0.00000
+DYNA PRESS>        -0.00000    -33.41804      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+DYNA>    65000     65.00000      1.03957      2.56666     -1.52709    287.02305
+DYNA PROP>         67.94431      1.04628      2.50355      0.00671    101.84073
+DYNA INTERN>        0.00000      0.00000      0.00000      0.23030      0.00000
+DYNA EXTERN>       -0.24901     -1.50838      0.00000      0.00000      0.00000
+DYNA PRESS>        -0.00000    -67.89382      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+ DYNAMC> Averages for the last 5000 steps:
+AVER DYN: Step         Time      TOTEner        TOTKe       ENERgy  TEMPerature
+AVER PROP:             GRMS      HFCTote        HFCKe       EHFCor        VIRKe
+AVER INTERN:          BONDs       ANGLes       UREY-b    DIHEdrals    IMPRopers
+AVER EXTERN:        VDWaals         ELEC       HBONds          ASP         USER
+AVER PRESS:            VIRE         VIRI       PRESSE       PRESSI       VOLUme
+ ----------       ---------    ---------    ---------    ---------    ---------
+AVER>     5000     65.00000      2.40256      2.72234     -0.31978    304.43178
+AVER PROP>        103.57863      2.40236      2.72121     -0.00020      3.79349
+AVER INTERN>        0.00000      0.00000      0.00000      1.27511      0.00000
+AVER EXTERN>       -0.17420     -1.42069      0.00000      0.00000      0.00000
+AVER PRESS>        -0.00000     -2.52899      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+ DYNAMC> RMS fluctuations for the last 5000 steps:
+FLUC>     5000     65.00000      1.65197      1.30956      1.02118    146.44413
+FLUC PROP>         19.79014      1.63364      1.24999      0.20406    194.52305
+FLUC INTERN>        0.00000      0.00000      0.00000      0.93958      0.00000
+FLUC EXTERN>        0.21788      0.26185      0.00000      0.00000      0.00000
+FLUC PRESS>         0.00000    129.68203      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+ DYNAMC> Averages for the last 65000 steps:
+LAVE>    65000     65.00000      3.11495      2.67957      0.43538    299.64867
+LAVE PROP>        103.52379      3.11493      2.67946     -0.00002      2.14111
+LAVE INTERN>        0.00000      0.00000      0.00000      1.02194      0.00000
+LAVE EXTERN>       -0.00051     -0.58605      0.00000      0.00000      0.00000
+LAVE PRESS>         0.00000     -1.42741      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+ DYNAMC> RMS fluctuations for the last 65000 steps:
+LFLC>    65000     65.00000      1.46527      1.25606      0.77568    140.46208
+LFLC PROP>         19.56716      1.44602      1.19807      0.19837    184.12036
+LFLC INTERN>        0.00000      0.00000      0.00000      0.73746      0.00000
+LFLC EXTERN>        0.35964      0.43578      0.00000      0.00000      0.00000
+LFLC PRESS>         0.00000    122.74691      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+
+     DRIFT/STEP (LAST-TOTAL):   -2.55776593E-04  -1.11962980E-05
+     E AT STEP 0            :     3.0419301        3.4788155    
+     CORR. COEFFICIENT      :   -0.22598782      -0.14528541    
+DYNA>    66000     66.00000      1.79356      3.03501     -1.24145    339.39748
+DYNA PROP>        119.71801      2.01825      3.14699      0.22469   -149.26394
+DYNA INTERN>        0.00000      0.00000      0.00000      0.49431      0.00000
+DYNA EXTERN>       -0.17941     -1.55635      0.00000      0.00000      0.00000
+DYNA PRESS>         0.00000     99.50930      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+DYNA>    67000     67.00000      3.57054      4.44300     -0.87246    496.84831
+DYNA PROP>        117.30556      3.54444      4.41059     -0.02609   -244.80971
+DYNA INTERN>        0.00000      0.00000      0.00000      0.85214      0.00000
+DYNA EXTERN>       -0.19980     -1.52480      0.00000      0.00000      0.00000
+DYNA PRESS>        -0.00000    163.20647      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+DYNA>    68000     68.00000      2.23980      3.21085     -0.97105    359.06085
+DYNA PROP>         60.48840      2.30788      3.10362      0.06808   -184.70326
+DYNA INTERN>        0.00000      0.00000      0.00000      0.83924      0.00000
+DYNA EXTERN>       -0.23260     -1.57768      0.00000      0.00000      0.00000
+DYNA PRESS>        -0.00000    123.13550      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+DYNA>    69000     69.00000      2.09783      3.51675     -1.41892    393.26923
+DYNA PROP>        126.97510      1.95987      3.70082     -0.13796    252.70360
+DYNA INTERN>        0.00000      0.00000      0.00000      0.48202      0.00000
+DYNA EXTERN>       -0.25183     -1.64912      0.00000      0.00000      0.00000
+DYNA PRESS>         0.00000   -168.46907      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+DYNA>    70000     70.00000      0.87393      2.59635     -1.72241    290.34242
+DYNA PROP>        121.62944      0.75487      2.63503     -0.11907    196.30480
+DYNA INTERN>        0.00000      0.00000      0.00000      0.09471      0.00000
+DYNA EXTERN>       -0.22995     -1.58717      0.00000      0.00000      0.00000
+DYNA PRESS>         0.00000   -130.86987      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+ DYNAMC> Averages for the last 5000 steps:
+AVER DYN: Step         Time      TOTEner        TOTKe       ENERgy  TEMPerature
+AVER PROP:             GRMS      HFCTote        HFCKe       EHFCor        VIRKe
+AVER INTERN:          BONDs       ANGLes       UREY-b    DIHEdrals    IMPRopers
+AVER EXTERN:        VDWaals         ELEC       HBONds          ASP         USER
+AVER PRESS:            VIRE         VIRI       PRESSE       PRESSI       VOLUme
+ ----------       ---------    ---------    ---------    ---------    ---------
+AVER>     5000     70.00000      1.84834      2.73671     -0.88837    306.03888
+AVER PROP>        103.83936      1.84737      2.73381     -0.00097      6.13993
+AVER INTERN>        0.00000      0.00000      0.00000      0.87387      0.00000
+AVER EXTERN>       -0.23964     -1.52260      0.00000      0.00000      0.00000
+AVER PRESS>        -0.00000     -4.09329      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+ DYNAMC> RMS fluctuations for the last 5000 steps:
+FLUC>     5000     70.00000      1.42383      1.32568      0.61701    148.24754
+FLUC PROP>         19.37602      1.40229      1.26417      0.20241    184.79019
+FLUC INTERN>        0.00000      0.00000      0.00000      0.61711      0.00000
+FLUC EXTERN>        0.09326      0.09492      0.00000      0.00000      0.00000
+FLUC PRESS>         0.00000    123.19346      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+ DYNAMC> Averages for the last 70000 steps:
+LAVE>    70000     70.00000      3.02448      2.68365      0.34083    300.10512
+LAVE PROP>        103.54633      3.02439      2.68334     -0.00009      2.42674
+LAVE INTERN>        0.00000      0.00000      0.00000      1.01136      0.00000
+LAVE EXTERN>       -0.01759     -0.65294      0.00000      0.00000      0.00000
+LAVE PRESS>        -0.00000     -1.61783      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+ DYNAMC> RMS fluctuations for the last 70000 steps:
+LFLC>    70000     70.00000      1.49829      1.26125      0.83792    141.04204
+LFLC PROP>         19.55373      1.47941      1.20299      0.19866    184.17117
+LFLC INTERN>        0.00000      0.00000      0.00000      0.73052      0.00000
+LFLC EXTERN>        0.35287      0.48494      0.00000      0.00000      0.00000
+LFLC PRESS>         0.00000    122.78078      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+
+     DRIFT/STEP (LAST-TOTAL):   -9.01958781E-05  -1.62034898E-05
+     E AT STEP 0            :     2.0729065        3.5915206    
+     CORR. COEFFICIENT      :   -9.28382073E-02  -0.22132350    
+ PERTURBATION> Free energy perturbation results:
+ PERTURBATION> results, LSTART=    0.500000  LSTOP=    0.400000  LLAST=    0.450000 Number of steps used=      5000
+ PERTURBATION> result: EXPAVE=0.982087E+00 0.102026E+01 EXPFLC=0.424512E-01 0.468776E-01 DIFAVE=    0.022710 DIFFLC=    0.053102
+ PERTURBATION> TP Windowing result, EPRTOT=   -0.322979 EFORWARD=   -0.126090 EBACKWARD=    0.124907 EPREFF=   -0.136865 EPREFB=    0.136865
+ PERTURBATION> TI Windowing result, EPRTOT=   -0.322950  EFORWARD=   -0.251020 EPREF=   -0.273730
+ PERTRES> LSTART  =     0.50000 LSTOP=     0.40000 EPRTOT=    -0.32295
+          EFORWARD=    -0.25102 EPREF=    -0.27373 DIFAVE=     0.02271
+          DIFFLC  =     0.05310
+ PERTURBATION> Averages for the last     5000  steps:
+PAVE DYN: Step         Time      TOTEner        TOTKe       ENERgy  TEMPerature
+PAVE PROP:             GRMS      HFCTote        HFCKe       EHFCor        VIRKe
+PAVE INTERN:          BONDs       ANGLes       UREY-b    DIHEdrals    IMPRopers
+PAVE EXTERN:        VDWaals         ELEC       HBONds          ASP         USER
+PAVE PRESS:            VIRE         VIRI       PRESSE       PRESSI       VOLUme
+ ----------       ---------    ---------    ---------    ---------    ---------
+PAVE>     5000      0.00000     -0.25102     -0.00001     -0.25102      0.00000
+PAVE PROP>          0.00000      0.00000      0.00000      0.00000      0.00000
+PAVE INTERN>        0.00000      0.00000      0.00000      0.04862      0.00000
+PAVE EXTERN>       -0.02280     -0.27684      0.00000      0.00000      0.00000
+PAVE PRESS>         0.00000     -0.19610      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+ PERTURBATION> Fluctuations for the last     5000  steps:
+PFLC>     5000      0.00000      0.05313      0.00147      0.05310      0.00000
+PFLC PROP>          0.00000      0.00000      0.00000      0.00000      0.00000
+PFLC INTERN>        0.00000      0.00000      0.00000      0.05317      0.00000
+PFLC EXTERN>        0.00073      0.01726      0.00000      0.00000      0.00000
+PFLC PRESS>         0.00000      0.01262      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+ PERTURBATION> TOTALS since last reset:
+PTOT>     5000      0.00000     -0.32295     -0.00002     -0.32295      0.00000
+PTOT PROP>          0.00000      0.00000      0.00000      0.00000      0.00000
+PTOT INTERN>        0.00000      0.00000      0.00000      0.95297      0.00000
+PTOT EXTERN>        0.12984     -1.40576      0.00000      0.00000      0.00000
+PTOT PRESS>         0.00000      0.44306      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+  
+  PUNIT>    lstart 0.4 lstop 0.3 pstart  75000 pstop  80000 pwind lambda 0.35
+ PERTURBATION> Free energy perturbation calculation continues.
+ PERTURBATION> PSTART=       75000  PSTOP=       80000
+ PERTURBATION> LSTART=    0.400000  LSTOP=    0.300000  LAMBDA=    0.350000
+ PERTURBATION> Windowing will be used.
+DYNA>    71000     71.00000      0.62367      1.83710     -1.21343    205.43751
+DYNA PROP>        111.36976      0.65976      1.91481      0.03609     76.61803
+DYNA INTERN>        0.00000      0.00000      0.00000      0.98634      0.00000
+DYNA EXTERN>       -0.23065     -1.96912      0.00000      0.00000      0.00000
+DYNA PRESS>         0.00000    -51.07868      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+DYNA>    72000     72.00000      1.95973      3.45337     -1.49364    386.18114
+DYNA PROP>         97.74748      1.91848      3.39039     -0.04125     18.89001
+DYNA INTERN>        0.00000      0.00000      0.00000      0.56780      0.00000
+DYNA EXTERN>       -0.02896     -2.03248      0.00000      0.00000      0.00000
+DYNA PRESS>         0.00000    -12.59334      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+DYNA>    73000     73.00000      2.70651      2.91434     -0.20783    325.90302
+DYNA PROP>         88.69353      2.53972      2.85634     -0.16679    -94.91796
+DYNA INTERN>        0.00000      0.00000      0.00000      2.65711      0.00000
+DYNA EXTERN>       -0.18126     -2.68368      0.00000      0.00000      0.00000
+DYNA PRESS>         0.00000     63.27864      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+DYNA>    74000     74.00000      2.24524      3.28911     -1.04387    367.81219
+DYNA PROP>         65.50765      2.15400      3.18040     -0.09124    -88.70075
+DYNA INTERN>        0.00000      0.00000      0.00000      1.24121      0.00000
+DYNA EXTERN>       -0.28462     -2.00046      0.00000      0.00000      0.00000
+DYNA PRESS>        -0.00000     59.13384      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+DYNA>    75000     75.00000      1.37682      2.04377     -0.66696    228.54985
+DYNA PROP>        122.81006      1.41222      2.08361      0.03540    441.66612
+DYNA INTERN>        0.00000      0.00000      0.00000      1.08576      0.00000
+DYNA EXTERN>        0.30958     -2.06230      0.00000      0.00000      0.00000
+DYNA PRESS>         0.00000   -294.44408      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+ DYNAMC> Averages for the last 5000 steps:
+AVER DYN: Step         Time      TOTEner        TOTKe       ENERgy  TEMPerature
+AVER PROP:             GRMS      HFCTote        HFCKe       EHFCor        VIRKe
+AVER INTERN:          BONDs       ANGLes       UREY-b    DIHEdrals    IMPRopers
+AVER EXTERN:        VDWaals         ELEC       HBONds          ASP         USER
+AVER PRESS:            VIRE         VIRI       PRESSE       PRESSI       VOLUme
+ ----------       ---------    ---------    ---------    ---------    ---------
+AVER>     5000     75.00000      2.10107      2.71693     -0.61586    303.82744
+AVER PROP>        103.24418      2.10016      2.71430     -0.00091     -1.21395
+AVER INTERN>        0.00000      0.00000      0.00000      1.65128      0.00000
+AVER EXTERN>       -0.20918     -2.05796      0.00000      0.00000      0.00000
+AVER PRESS>         0.00000      0.80930      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+ DYNAMC> RMS fluctuations for the last 5000 steps:
+FLUC>     5000     75.00000      1.62761      1.23816      1.10978    138.46044
+FLUC PROP>         19.67420      1.61153      1.18092      0.19813    177.57216
+FLUC INTERN>        0.00000      0.00000      0.00000      1.24723      0.00000
+FLUC EXTERN>        0.20476      0.26078      0.00000      0.00000      0.00000
+FLUC PRESS>         0.00000    118.38144      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+ DYNAMC> Averages for the last 75000 steps:
+LAVE>    75000     75.00000      2.96292      2.68587      0.27705    300.35327
+LAVE PROP>        103.52619      2.96277      2.68541     -0.00014      2.18403
+LAVE INTERN>        0.00000      0.00000      0.00000      1.05402      0.00000
+LAVE EXTERN>       -0.03036     -0.74661      0.00000      0.00000      0.00000
+LAVE PRESS>        -0.00000     -1.45602      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+ DYNAMC> RMS fluctuations for the last 75000 steps:
+LFLC>    75000     75.00000      1.52475      1.25975      0.89127    140.87447
+LFLC PROP>         19.56193      1.50633      1.20156      0.19862    183.74085
+LFLC INTERN>        0.00000      0.00000      0.00000      0.79200      0.00000
+LFLC EXTERN>        0.34827      0.58894      0.00000      0.00000      0.00000
+LFLC PRESS>         0.00000    122.49390      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+
+     DRIFT/STEP (LAST-TOTAL):   -5.34096876E-05  -1.77904809E-05
+     E AT STEP 0            :     2.2337099        3.6299268    
+     CORR. COEFFICIENT      :   -4.78365873E-02  -0.25570446    
+DYNA>    76000     76.00000      1.26189      1.84604     -0.58415    206.43739
+DYNA PROP>        133.31698      1.48429      2.09134      0.22240   -239.75071
+DYNA INTERN>        0.00000      0.00000      0.00000      1.27514      0.00000
+DYNA EXTERN>        0.22639     -2.08568      0.00000      0.00000      0.00000
+DYNA PRESS>        -0.00000    159.83381      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+DYNA>    77000     77.00000      2.57718      3.35430     -0.77713    375.10275
+DYNA PROP>         77.27312      2.38512      3.28618     -0.19206     65.15834
+DYNA INTERN>        0.00000      0.00000      0.00000      1.54610      0.00000
+DYNA EXTERN>       -0.36625     -1.95697      0.00000      0.00000      0.00000
+DYNA PRESS>         0.00000    -43.43889      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+DYNA>    78000     78.00000      3.81361      4.23561     -0.42200    473.65652
+DYNA PROP>        147.08033      3.64432      4.28998     -0.16929    134.02497
+DYNA INTERN>        0.00000      0.00000      0.00000      1.30395      0.00000
+DYNA EXTERN>        0.25216     -1.97811      0.00000      0.00000      0.00000
+DYNA PRESS>        -0.00000    -89.34998      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+DYNA>    79000     79.00000      1.29830      3.08289     -1.78458    344.75100
+DYNA PROP>         77.88362      1.15922      3.00303     -0.13908   -123.66020
+DYNA INTERN>        0.00000      0.00000      0.00000      0.23342      0.00000
+DYNA EXTERN>       -0.17872     -1.83929      0.00000      0.00000      0.00000
+DYNA PRESS>        -0.00000     82.44013      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+DYNA>    80000     80.00000      0.38921      2.15004     -1.76083    240.43304
+DYNA PROP>        107.43831      0.11653      2.17448     -0.27268    -25.18511
+DYNA INTERN>        0.00000      0.00000      0.00000      0.31115      0.00000
+DYNA EXTERN>       -0.27060     -1.80138      0.00000      0.00000      0.00000
+DYNA PRESS>        -0.00000     16.79007      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+ DYNAMC> Averages for the last 5000 steps:
+AVER DYN: Step         Time      TOTEner        TOTKe       ENERgy  TEMPerature
+AVER PROP:             GRMS      HFCTote        HFCKe       EHFCor        VIRKe
+AVER INTERN:          BONDs       ANGLes       UREY-b    DIHEdrals    IMPRopers
+AVER EXTERN:        VDWaals         ELEC       HBONds          ASP         USER
+AVER PRESS:            VIRE         VIRI       PRESSE       PRESSI       VOLUme
+ ----------       ---------    ---------    ---------    ---------    ---------
+AVER>     5000     80.00000      1.53962      2.55204     -1.01241    285.38738
+AVER PROP>        103.89362      1.54185      2.55856      0.00222     -0.92806
+AVER INTERN>        0.00000      0.00000      0.00000      1.13570      0.00000
+AVER EXTERN>       -0.13481     -2.01330      0.00000      0.00000      0.00000
+AVER PRESS>         0.00000      0.61871      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+ DYNAMC> RMS fluctuations for the last 5000 steps:
+FLUC>     5000     80.00000      1.34341      1.22149      0.61145    136.59556
+FLUC PROP>         19.63064      1.32332      1.16383      0.19324    180.78927
+FLUC INTERN>        0.00000      0.00000      0.00000      0.71221      0.00000
+FLUC EXTERN>        0.18332      0.18124      0.00000      0.00000      0.00000
+FLUC PRESS>         0.00000    120.52618      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+ DYNAMC> Averages for the last 80000 steps:
+LAVE>    80000     80.00000      2.87396      2.67750      0.19646    299.41790
+LAVE PROP>        103.54916      2.87397      2.67748      0.00001      1.98952
+LAVE INTERN>        0.00000      0.00000      0.00000      1.05913      0.00000
+LAVE EXTERN>       -0.03689     -0.82578      0.00000      0.00000      0.00000
+LAVE PRESS>        -0.00000     -1.32635      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+ DYNAMC> RMS fluctuations for the last 80000 steps:
+LFLC>    80000     80.00000      1.55276      1.25781      0.93033    140.65751
+LFLC PROP>         19.56644      1.53459      1.19963      0.19829    183.55931
+LFLC INTERN>        0.00000      0.00000      0.00000      0.78750      0.00000
+LFLC EXTERN>        0.34125      0.64903      0.00000      0.00000      0.00000
+LFLC PRESS>         0.00000    122.37288      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+
+     DRIFT/STEP (LAST-TOTAL):   -7.17887597E-05  -2.09207384E-05
+     E AT STEP 0            :     1.7213559        3.7108070    
+     CORR. COEFFICIENT      :   -7.83016952E-02  -0.31483577    
+ PERTURBATION> Free energy perturbation results:
+ PERTURBATION> results, LSTART=    0.400000  LSTOP=    0.300000  LLAST=    0.350000 Number of steps used=      5000
+ PERTURBATION> result: EXPAVE=0.952008E+00 0.105175E+01 EXPFLC=0.331283E-01 0.384398E-01 DIFAVE=    0.059384 DIFFLC=    0.042482
+ PERTURBATION> TP Windowing result, EPRTOT=   -0.603938 EFORWARD=   -0.140858 EBACKWARD=    0.140101 EPREFF=   -0.170178 EPREFB=    0.170178
+ PERTURBATION> TI Windowing result, EPRTOT=   -0.603921  EFORWARD=   -0.280971 EPREF=   -0.340355
+ PERTRES> LSTART  =     0.40000 LSTOP=     0.30000 EPRTOT=    -0.60392
+          EFORWARD=    -0.28097 EPREF=    -0.34036 DIFAVE=     0.05938
+          DIFFLC  =     0.04248
+ PERTURBATION> Averages for the last     5000  steps:
+PAVE DYN: Step         Time      TOTEner        TOTKe       ENERgy  TEMPerature
+PAVE PROP:             GRMS      HFCTote        HFCKe       EHFCor        VIRKe
+PAVE INTERN:          BONDs       ANGLes       UREY-b    DIHEdrals    IMPRopers
+PAVE EXTERN:        VDWaals         ELEC       HBONds          ASP         USER
+PAVE PRESS:            VIRE         VIRI       PRESSE       PRESSI       VOLUme
+ ----------       ---------    ---------    ---------    ---------    ---------
+PAVE>     5000      0.00000     -0.28097      0.00001     -0.28097      0.00000
+PAVE PROP>          0.00000      0.00000      0.00000      0.00000      0.00000
+PAVE INTERN>        0.00000      0.00000      0.00000      0.05327      0.00000
+PAVE EXTERN>       -0.02450     -0.30974      0.00000      0.00000      0.00000
+PAVE PRESS>         0.00000     -0.22047      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+ PERTURBATION> Fluctuations for the last     5000  steps:
+PFLC>     5000      0.00000      0.04250      0.00156      0.04248      0.00000
+PFLC PROP>          0.00000      0.00000      0.00000      0.00000      0.00000
+PFLC INTERN>        0.00000      0.00000      0.00000      0.05190      0.00000
+PFLC EXTERN>        0.00148      0.02788      0.00000      0.00000      0.00000
+PFLC PRESS>         0.00000      0.01907      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+ PERTURBATION> TOTALS since last reset:
+PTOT>     5000      0.00000     -0.60392     -0.00001     -0.60392      0.00000
+PTOT PROP>          0.00000      0.00000      0.00000      0.00000      0.00000
+PTOT INTERN>        0.00000      0.00000      0.00000      1.00624      0.00000
+PTOT EXTERN>        0.10534     -1.71550      0.00000      0.00000      0.00000
+PTOT PRESS>         0.00000      0.22259      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+  
+  PUNIT>    lstart 0.3 lstop 0.2 pstart  85000 pstop  90000 pwind lambda 0.25
+ PERTURBATION> Free energy perturbation calculation continues.
+ PERTURBATION> PSTART=       85000  PSTOP=       90000
+ PERTURBATION> LSTART=    0.300000  LSTOP=    0.200000  LAMBDA=    0.250000
+ PERTURBATION> Windowing will be used.
+DYNA>    81000     81.00000      0.11997      1.64320     -1.52322    183.75426
+DYNA PROP>        129.19529      0.03090      1.64229     -0.08907   -346.50878
+DYNA INTERN>        0.00000      0.00000      0.00000      1.01061      0.00000
+DYNA EXTERN>       -0.37901     -2.15482      0.00000      0.00000      0.00000
+DYNA PRESS>        -0.00000    231.00585      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+DYNA>    82000     82.00000      0.07820      2.07653     -1.99833    232.21320
+DYNA PROP>        106.89690     -0.09669      2.05814     -0.17488    127.83865
+DYNA INTERN>        0.00000      0.00000      0.00000      0.43885      0.00000
+DYNA EXTERN>       -0.11802     -2.31916      0.00000      0.00000      0.00000
+DYNA PRESS>         0.00000    -85.22576      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+DYNA>    83000     83.00000      5.29121      6.62356     -1.33235    740.69479
+DYNA PROP>         91.48020      5.10522      6.37700     -0.18599    -44.87834
+DYNA INTERN>        0.00000      0.00000      0.00000      1.13936      0.00000
+DYNA EXTERN>       -0.36773     -2.10398      0.00000      0.00000      0.00000
+DYNA PRESS>         0.00000     29.91889      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+DYNA>    84000     84.00000      1.51587      2.48861     -0.97274    278.29464
+DYNA PROP>         77.37207      1.51716      2.47050      0.00129    -74.99658
+DYNA INTERN>        0.00000      0.00000      0.00000      1.37412      0.00000
+DYNA EXTERN>       -0.13696     -2.20991      0.00000      0.00000      0.00000
+DYNA PRESS>         0.00000     49.99772      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+DYNA>    85000     85.00000      0.61069      2.53613     -1.92544    283.60888
+DYNA PROP>         82.57463      0.70362      2.52509      0.09293    -95.60317
+DYNA INTERN>        0.00000      0.00000      0.00000      0.47419      0.00000
+DYNA EXTERN>       -0.32501     -2.07462      0.00000      0.00000      0.00000
+DYNA PRESS>        -0.00000     63.73545      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+ DYNAMC> Averages for the last 5000 steps:
+AVER DYN: Step         Time      TOTEner        TOTKe       ENERgy  TEMPerature
+AVER PROP:             GRMS      HFCTote        HFCKe       EHFCor        VIRKe
+AVER INTERN:          BONDs       ANGLes       UREY-b    DIHEdrals    IMPRopers
+AVER EXTERN:        VDWaals         ELEC       HBONds          ASP         USER
+AVER PRESS:            VIRE         VIRI       PRESSE       PRESSI       VOLUme
+ ----------       ---------    ---------    ---------    ---------    ---------
+AVER>     5000     85.00000      0.88861      2.72526     -1.83665    304.75800
+AVER PROP>        103.50330      0.88809      2.72367     -0.00052      4.45031
+AVER INTERN>        0.00000      0.00000      0.00000      0.56985      0.00000
+AVER EXTERN>       -0.21836     -2.18813      0.00000      0.00000      0.00000
+AVER PRESS>         0.00000     -2.96687      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+ DYNAMC> RMS fluctuations for the last 5000 steps:
+FLUC>     5000     85.00000      1.32744      1.25118      0.43048    139.91605
+FLUC PROP>         19.88588      1.30649      1.19357      0.20204    179.84897
+FLUC INTERN>        0.00000      0.00000      0.00000      0.44557      0.00000
+FLUC EXTERN>        0.11737      0.09989      0.00000      0.00000      0.00000
+FLUC PRESS>         0.00000    119.89932      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+ DYNAMC> Averages for the last 85000 steps:
+LAVE>    85000     85.00000      2.75717      2.68031      0.07686    299.73203
+LAVE PROP>        103.54646      2.75715      2.68019     -0.00002      2.13427
+LAVE INTERN>        0.00000      0.00000      0.00000      1.03034      0.00000
+LAVE EXTERN>       -0.04756     -0.90592      0.00000      0.00000      0.00000
+LAVE PRESS>        -0.00000     -1.42285      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+ DYNAMC> RMS fluctuations for the last 85000 steps:
+LFLC>    85000     85.00000      1.60969      1.25747      1.02681    140.61962
+LFLC PROP>         19.58537      1.59223      1.19932      0.19851    183.34405
+LFLC INTERN>        0.00000      0.00000      0.00000      0.78013      0.00000
+LFLC EXTERN>        0.33502      0.70697      0.00000      0.00000      0.00000
+LFLC PRESS>         0.00000    122.22937      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+
+     DRIFT/STEP (LAST-TOTAL):    2.76404254E-05  -2.51969242E-05
+     E AT STEP 0            :    0.81897790        3.8280327    
+     CORR. COEFFICIENT      :    3.05364794E-02  -0.38830354    
+DYNA>    86000     86.00000      1.86691      3.58960     -1.72269    401.41566
+DYNA PROP>         79.39068      1.98907      3.48845      0.12216    286.15721
+DYNA INTERN>        0.00000      0.00000      0.00000      0.59042      0.00000
+DYNA EXTERN>       -0.24921     -2.06391      0.00000      0.00000      0.00000
+DYNA PRESS>        -0.00000   -190.77147      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+DYNA>    87000     87.00000      0.00583      0.74967     -0.74384     83.83350
+DYNA PROP>         99.07183     -0.04139      0.87298     -0.04721     -6.03658
+DYNA INTERN>        0.00000      0.00000      0.00000      1.70110      0.00000
+DYNA EXTERN>       -0.39234     -2.05260      0.00000      0.00000      0.00000
+DYNA PRESS>        -0.00000      4.02439      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+DYNA>    88000     88.00000      2.20597      3.33160     -1.12563    372.56341
+DYNA PROP>         70.36101      2.46325      3.25755      0.25728   -120.21740
+DYNA INTERN>        0.00000      0.00000      0.00000      1.11573      0.00000
+DYNA EXTERN>       -0.36735     -1.87401      0.00000      0.00000      0.00000
+DYNA PRESS>         0.00000     80.14493      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+DYNA>    89000     89.00000      0.22693      1.82602     -1.59909    204.19865
+DYNA PROP>        125.65863      0.09642      1.92934     -0.13050    329.33106
+DYNA INTERN>        0.00000      0.00000      0.00000      0.72350      0.00000
+DYNA EXTERN>       -0.35794     -1.96465      0.00000      0.00000      0.00000
+DYNA PRESS>        -0.00000   -219.55404      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+DYNA>    90000     90.00000      0.03159      1.86120     -1.82962    208.13341
+DYNA PROP>        133.95427      0.21335      2.00821      0.18176    244.12375
+DYNA INTERN>        0.00000      0.00000      0.00000      0.45127      0.00000
+DYNA EXTERN>       -0.23472     -2.04617      0.00000      0.00000      0.00000
+DYNA PRESS>        -0.00000   -162.74916      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+ DYNAMC> Averages for the last 5000 steps:
+AVER DYN: Step         Time      TOTEner        TOTKe       ENERgy  TEMPerature
+AVER PROP:             GRMS      HFCTote        HFCKe       EHFCor        VIRKe
+AVER INTERN:          BONDs       ANGLes       UREY-b    DIHEdrals    IMPRopers
+AVER EXTERN:        VDWaals         ELEC       HBONds          ASP         USER
+AVER PRESS:            VIRE         VIRI       PRESSE       PRESSI       VOLUme
+ ----------       ---------    ---------    ---------    ---------    ---------
+AVER>     5000     90.00000      1.26030      2.74243     -1.48213    306.67895
+AVER PROP>        103.42313      1.25919      2.73902     -0.00111      3.72740
+AVER INTERN>        0.00000      0.00000      0.00000      0.81646      0.00000
+AVER EXTERN>       -0.26009     -2.03850      0.00000      0.00000      0.00000
+AVER PRESS>         0.00000     -2.48493      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+ DYNAMC> RMS fluctuations for the last 5000 steps:
+FLUC>     5000     90.00000      1.49166      1.31558      0.66876    147.11723
+FLUC PROP>         19.81931      1.47031      1.25380      0.20508    182.54414
+FLUC INTERN>        0.00000      0.00000      0.00000      0.63568      0.00000
+FLUC EXTERN>        0.10960      0.09087      0.00000      0.00000      0.00000
+FLUC PRESS>         0.00000    121.69609      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+ DYNAMC> Averages for the last 90000 steps:
+LAVE>    90000     90.00000      2.67402      2.68376     -0.00975    300.11797
+LAVE PROP>        103.53961      2.67393      2.68346     -0.00008      2.22278
+LAVE INTERN>        0.00000      0.00000      0.00000      1.01846      0.00000
+LAVE EXTERN>       -0.05937     -0.96884      0.00000      0.00000      0.00000
+LAVE PRESS>         0.00000     -1.48185      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+ DYNAMC> RMS fluctuations for the last 90000 steps:
+LFLC>    90000     90.00000      1.63962      1.26085      1.07151    140.99743
+LFLC PROP>         19.59846      1.62240      1.20249      0.19888    183.30007
+LFLC INTERN>        0.00000      0.00000      0.00000      0.77437      0.00000
+LFLC EXTERN>        0.33021      0.73471      0.00000      0.00000      0.00000
+LFLC PRESS>         0.00000    122.20004      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+
+     DRIFT/STEP (LAST-TOTAL):    1.39228447E-04  -2.64423299E-05
+     E AT STEP 0            :    0.91104896        3.8638489    
+     CORR. COEFFICIENT      :    0.13667761      -0.42344240    
+ PERTURBATION> Free energy perturbation results:
+ PERTURBATION> results, LSTART=    0.300000  LSTOP=    0.200000  LLAST=    0.250000 Number of steps used=      5000
+ PERTURBATION> result: EXPAVE=0.981359E+00 0.102287E+01 EXPFLC=0.573630E-01 0.665641E-01 DIFAVE=    0.024620 DIFFLC=    0.073457
+ PERTURBATION> TP Windowing result, EPRTOT=   -0.842213 EFORWARD=   -0.120270 EBACKWARD=    0.118005 EPREFF=   -0.131488 EPREFB=    0.131488
+ PERTURBATION> TI Windowing result, EPRTOT=   -0.842276  EFORWARD=   -0.238355 EPREF=   -0.262975
+ PERTRES> LSTART  =     0.30000 LSTOP=     0.20000 EPRTOT=    -0.84228
+          EFORWARD=    -0.23836 EPREF=    -0.26298 DIFAVE=     0.02462
+          DIFFLC  =     0.07346
+ PERTURBATION> Averages for the last     5000  steps:
+PAVE DYN: Step         Time      TOTEner        TOTKe       ENERgy  TEMPerature
+PAVE PROP:             GRMS      HFCTote        HFCKe       EHFCor        VIRKe
+PAVE INTERN:          BONDs       ANGLes       UREY-b    DIHEdrals    IMPRopers
+PAVE EXTERN:        VDWaals         ELEC       HBONds          ASP         USER
+PAVE PRESS:            VIRE         VIRI       PRESSE       PRESSI       VOLUme
+ ----------       ---------    ---------    ---------    ---------    ---------
+PAVE>     5000      0.00000     -0.23836      0.00000     -0.23836      0.00000
+PAVE PROP>          0.00000      0.00000      0.00000      0.00000      0.00000
+PAVE INTERN>        0.00000      0.00000      0.00000      0.05592      0.00000
+PAVE EXTERN>       -0.02247     -0.27180      0.00000      0.00000      0.00000
+PAVE PRESS>         0.00000     -0.19122      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+ PERTURBATION> Fluctuations for the last     5000  steps:
+PFLC>     5000      0.00000      0.07347      0.00140      0.07346      0.00000
+PFLC PROP>          0.00000      0.00000      0.00000      0.00000      0.00000
+PFLC INTERN>        0.00000      0.00000      0.00000      0.06824      0.00000
+PFLC EXTERN>        0.00104      0.01212      0.00000      0.00000      0.00000
+PFLC PRESS>         0.00000      0.01343      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+ PERTURBATION> TOTALS since last reset:
+PTOT>     5000      0.00000     -0.84228     -0.00000     -0.84228      0.00000
+PTOT PROP>          0.00000      0.00000      0.00000      0.00000      0.00000
+PTOT INTERN>        0.00000      0.00000      0.00000      1.06215      0.00000
+PTOT EXTERN>        0.08287     -1.98730      0.00000      0.00000      0.00000
+PTOT PRESS>         0.00000      0.03137      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+  
+  PUNIT>    lstart 0.2 lstop 0.1 pstart  95000 pstop 100000 pwind lambda 0.15
+ PERTURBATION> Free energy perturbation calculation continues.
+ PERTURBATION> PSTART=       95000  PSTOP=      100000
+ PERTURBATION> LSTART=    0.200000  LSTOP=    0.100000  LAMBDA=    0.150000
+ PERTURBATION> Windowing will be used.
+DYNA>    91000     91.00000      1.38297      2.41504     -1.03207    270.06722
+DYNA PROP>        140.46999      1.66941      2.49465      0.28644   -212.82297
+DYNA INTERN>        0.00000      0.00000      0.00000      1.52944      0.00000
+DYNA EXTERN>       -0.30673     -2.25478      0.00000      0.00000      0.00000
+DYNA PRESS>        -0.00000    141.88198      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+DYNA>    92000     92.00000      0.14346      1.33791     -1.19445    149.61527
+DYNA PROP>        114.85502      0.40232      1.48424      0.25886    175.36186
+DYNA INTERN>        0.00000      0.00000      0.00000      1.36951      0.00000
+DYNA EXTERN>       -0.36772     -2.19624      0.00000      0.00000      0.00000
+DYNA PRESS>        -0.00000   -116.90791      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+DYNA>    93000     93.00000      0.32656      0.97613     -0.64957    109.15793
+DYNA PROP>        137.23487      0.56273      1.11747      0.23616    -74.68694
+DYNA INTERN>        0.00000      0.00000      0.00000      1.88122      0.00000
+DYNA EXTERN>       -0.38218     -2.14860      0.00000      0.00000      0.00000
+DYNA PRESS>         0.00000     49.79129      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+DYNA>    94000     94.00000      0.04430      2.23338     -2.18907    249.75242
+DYNA PROP>         90.42825      0.20494      2.21714      0.16063    456.34238
+DYNA INTERN>        0.00000      0.00000      0.00000      0.48320      0.00000
+DYNA EXTERN>       -0.37009     -2.30218      0.00000      0.00000      0.00000
+DYNA PRESS>        -0.00000   -304.22825      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+DYNA>    95000     95.00000      5.27687      6.51230     -1.23544    728.25350
+DYNA PROP>        126.40054      5.06571      6.29243     -0.21116    186.78455
+DYNA INTERN>        0.00000      0.00000      0.00000      1.88075      0.00000
+DYNA EXTERN>       -0.39664     -2.71955      0.00000      0.00000      0.00000
+DYNA PRESS>        -0.00000   -124.52303      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+ DYNAMC> Averages for the last 5000 steps:
+AVER DYN: Step         Time      TOTEner        TOTKe       ENERgy  TEMPerature
+AVER PROP:             GRMS      HFCTote        HFCKe       EHFCor        VIRKe
+AVER INTERN:          BONDs       ANGLes       UREY-b    DIHEdrals    IMPRopers
+AVER EXTERN:        VDWaals         ELEC       HBONds          ASP         USER
+AVER PRESS:            VIRE         VIRI       PRESSE       PRESSI       VOLUme
+ ----------       ---------    ---------    ---------    ---------    ---------
+AVER>     5000     95.00000      1.63029      2.73073     -1.10045    305.37069
+AVER PROP>        104.12993      1.62953      2.72948     -0.00076      5.44713
+AVER INTERN>        0.00000      0.00000      0.00000      1.48214      0.00000
+AVER EXTERN>       -0.24984     -2.33274      0.00000      0.00000      0.00000
+AVER PRESS>         0.00000     -3.63142      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+ DYNAMC> RMS fluctuations for the last 5000 steps:
+FLUC>     5000     95.00000      1.64209      1.29780      1.07679    145.12954
+FLUC PROP>         19.64730      1.62413      1.23817      0.20215    182.63506
+FLUC INTERN>        0.00000      0.00000      0.00000      1.01235      0.00000
+FLUC EXTERN>        0.13240      0.13175      0.00000      0.00000      0.00000
+FLUC PRESS>         0.00000    121.75671      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+ DYNAMC> Averages for the last 95000 steps:
+LAVE>    95000     95.00000      2.61908      2.68623     -0.06715    300.39443
+LAVE PROP>        103.57068      2.61896      2.68588     -0.00012      2.39248
+LAVE INTERN>        0.00000      0.00000      0.00000      1.04287      0.00000
+LAVE EXTERN>       -0.06939     -1.04062      0.00000      0.00000      0.00000
+LAVE PRESS>         0.00000     -1.59499      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+ DYNAMC> RMS fluctuations for the last 95000 steps:
+LFLC>    95000     95.00000      1.65623      1.26286      1.09911    141.22279
+LFLC PROP>         19.60148      1.63916      1.20444      0.19906    183.26654
+LFLC INTERN>        0.00000      0.00000      0.00000      0.79545      0.00000
+LFLC EXTERN>        0.32562      0.77785      0.00000      0.00000      0.00000
+LFLC PRESS>         0.00000    122.17769      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+
+     DRIFT/STEP (LAST-TOTAL):   -1.43724056E-04  -2.57930527E-05
+     E AT STEP 0            :     1.9889074        3.8441450    
+     CORR. COEFFICIENT      :   -0.12772845      -0.43153237    
+DYNA>    96000     96.00000      1.13114      2.73355     -1.60242    305.68576
+DYNA PROP>        115.22510      1.42488      2.74423      0.29374   -141.67326
+DYNA INTERN>        0.00000      0.00000      0.00000      0.94758      0.00000
+DYNA EXTERN>       -0.40847     -2.14152      0.00000      0.00000      0.00000
+DYNA PRESS>        -0.00000     94.44884      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+DYNA>    97000     97.00000      1.44754      2.78338     -1.33584    311.25812
+DYNA PROP>        111.56153      1.25323      2.78560     -0.19432     40.08942
+DYNA INTERN>        0.00000      0.00000      0.00000      1.63469      0.00000
+DYNA EXTERN>       -0.41514     -2.55539      0.00000      0.00000      0.00000
+DYNA PRESS>         0.00000    -26.72628      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+DYNA>    98000     98.00000      0.51150      2.85724     -2.34575    319.51776
+DYNA PROP>        120.87028      0.44313      2.94476     -0.06837    -97.81795
+DYNA INTERN>        0.00000      0.00000      0.00000      0.27250      0.00000
+DYNA EXTERN>       -0.17908     -2.43917      0.00000      0.00000      0.00000
+DYNA PRESS>         0.00000     65.21197      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+DYNA>    99000     99.00000      2.26137      4.19471     -1.93334    469.08309
+DYNA PROP>        113.60154      2.14176      4.09143     -0.11961    259.40452
+DYNA INTERN>        0.00000      0.00000      0.00000      0.68598      0.00000
+DYNA EXTERN>       -0.39965     -2.21967      0.00000      0.00000      0.00000
+DYNA PRESS>         0.00000   -172.93635      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+DYNA>   100000    100.00000      0.30014      0.88783     -0.58769     99.28352
+DYNA PROP>        109.00412      0.22849      0.90832     -0.07165   -276.54796
+DYNA INTERN>        0.00000      0.00000      0.00000      2.21757      0.00000
+DYNA EXTERN>       -0.43670     -2.36856      0.00000      0.00000      0.00000
+DYNA PRESS>        -0.00000    184.36531      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+ DYNAMC> Averages for the last 5000 steps:
+AVER DYN: Step         Time      TOTEner        TOTKe       ENERgy  TEMPerature
+AVER PROP:             GRMS      HFCTote        HFCKe       EHFCor        VIRKe
+AVER INTERN:          BONDs       ANGLes       UREY-b    DIHEdrals    IMPRopers
+AVER EXTERN:        VDWaals         ELEC       HBONds          ASP         USER
+AVER PRESS:            VIRE         VIRI       PRESSE       PRESSI       VOLUme
+ ----------       ---------    ---------    ---------    ---------    ---------
+AVER>     5000    100.00000      0.92165      2.66994     -1.74830    298.57273
+AVER PROP>        103.61172      0.92218      2.67058      0.00054      4.17835
+AVER INTERN>        0.00000      0.00000      0.00000      1.00196      0.00000
+AVER EXTERN>       -0.31563     -2.43463      0.00000      0.00000      0.00000
+AVER PRESS>         0.00000     -2.78557      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+ DYNAMC> RMS fluctuations for the last 5000 steps:
+FLUC>     5000    100.00000      1.38181      1.25790      0.58061    140.66759
+FLUC PROP>         19.60299      1.36180      1.19921      0.19561    182.03984
+FLUC INTERN>        0.00000      0.00000      0.00000      0.62672      0.00000
+FLUC EXTERN>        0.08944      0.15741      0.00000      0.00000      0.00000
+FLUC PRESS>         0.00000    121.35989      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+ DYNAMC> Averages for the last 100000 steps:
+LAVE>   100000    100.00000      2.53421      2.68542     -0.15121    300.30334
+LAVE PROP>        103.57273      2.53412      2.68512     -0.00009      2.48178
+LAVE INTERN>        0.00000      0.00000      0.00000      1.04082      0.00000
+LAVE EXTERN>       -0.08171     -1.11032      0.00000      0.00000      0.00000
+LAVE PRESS>         0.00000     -1.65452      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+ DYNAMC> RMS fluctuations for the last 100000 steps:
+LFLC>   100000    100.00000      1.68471      1.26262      1.13963    141.19564
+LFLC PROP>         19.60156      1.66793      1.20418      0.19889    183.20581
+LFLC INTERN>        0.00000      0.00000      0.00000      0.78793      0.00000
+LFLC EXTERN>        0.32250      0.81752      0.00000      0.00000      0.00000
+LFLC PRESS>         0.00000    122.13721      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+
+     DRIFT/STEP (LAST-TOTAL):   -2.39480555E-04  -2.69800727E-05
+     E AT STEP 0            :     1.5210046        3.8831403    
+     CORR. COEFFICIENT      :   -0.25382616      -0.46695422    
+ PERTURBATION> Free energy perturbation results:
+ PERTURBATION> results, LSTART=    0.200000  LSTOP=    0.100000  LLAST=    0.150000 Number of steps used=      5000
+ PERTURBATION> result: EXPAVE=0.976755E+00 0.102496E+01 EXPFLC=0.323077E-01 0.352142E-01 DIFAVE=    0.028711 DIFFLC=    0.040180
+ PERTURBATION> TP Windowing result, EPRTOT=   -1.123996 EFORWARD=   -0.141230 EBACKWARD=    0.140553 EPREFF=   -0.155252 EPREFB=    0.155252
+ PERTURBATION> TI Windowing result, EPRTOT=   -1.124069  EFORWARD=   -0.281792 EPREF=   -0.310503
+ PERTRES> LSTART  =     0.20000 LSTOP=     0.10000 EPRTOT=    -1.12407
+          EFORWARD=    -0.28179 EPREF=    -0.31050 DIFAVE=     0.02871
+          DIFFLC  =     0.04018
+ PERTURBATION> Averages for the last     5000  steps:
+PAVE DYN: Step         Time      TOTEner        TOTKe       ENERgy  TEMPerature
+PAVE PROP:             GRMS      HFCTote        HFCKe       EHFCor        VIRKe
+PAVE INTERN:          BONDs       ANGLes       UREY-b    DIHEdrals    IMPRopers
+PAVE EXTERN:        VDWaals         ELEC       HBONds          ASP         USER
+PAVE PRESS:            VIRE         VIRI       PRESSE       PRESSI       VOLUme
+ ----------       ---------    ---------    ---------    ---------    ---------
+PAVE>     5000      0.00000     -0.28179      0.00001     -0.28179      0.00000
+PAVE PROP>          0.00000      0.00000      0.00000      0.00000      0.00000
+PAVE INTERN>        0.00000      0.00000      0.00000      0.02802      0.00000
+PAVE EXTERN>       -0.02339     -0.28643      0.00000      0.00000      0.00000
+PAVE PRESS>         0.00000     -0.20491      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+ PERTURBATION> Fluctuations for the last     5000  steps:
+PFLC>     5000      0.00000      0.04020      0.00132      0.04018      0.00000
+PFLC PROP>          0.00000      0.00000      0.00000      0.00000      0.00000
+PFLC INTERN>        0.00000      0.00000      0.00000      0.03637      0.00000
+PFLC EXTERN>        0.00091      0.01852      0.00000      0.00000      0.00000
+PFLC PRESS>         0.00000      0.01387      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+ PERTURBATION> TOTALS since last reset:
+PTOT>     5000      0.00000     -1.12407      0.00000     -1.12407      0.00000
+PTOT PROP>          0.00000      0.00000      0.00000      0.00000      0.00000
+PTOT INTERN>        0.00000      0.00000      0.00000      1.09018      0.00000
+PTOT EXTERN>        0.05948     -2.27372      0.00000      0.00000      0.00000
+PTOT PRESS>         0.00000     -0.17355      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+  
+  PUNIT>    lstart 0.1 lstop 0.0 pstart 105000 pstop 110000 pwind lambda 0.05
+ PERTURBATION> Free energy perturbation calculation continues.
+ PERTURBATION> PSTART=      105000  PSTOP=      110000
+ PERTURBATION> LSTART=    0.100000  LSTOP=    0.000000  LAMBDA=    0.050000
+ PERTURBATION> Windowing will be used.
+DYNA>   101000    101.00000      1.01930      2.15748     -1.13818    241.26499
+DYNA PROP>        102.00389      0.93980      2.23936     -0.07950     36.71654
+DYNA INTERN>        0.00000      0.00000      0.00000      2.47407      0.00000
+DYNA EXTERN>       -0.41623     -3.19602      0.00000      0.00000      0.00000
+DYNA PRESS>        -0.00000    -24.47769      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+DYNA>   102000    102.00000     -0.27280      1.25827     -1.53107    140.70918
+DYNA PROP>        102.82958     -0.13264      1.42389      0.14016    134.11990
+DYNA INTERN>        0.00000      0.00000      0.00000      1.49043      0.00000
+DYNA EXTERN>       -0.43395     -2.58755      0.00000      0.00000      0.00000
+DYNA PRESS>         0.00000    -89.41327      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+DYNA>   103000    103.00000     -0.39116      2.32278     -2.71394    259.75040
+DYNA PROP>         77.88491     -0.50288      2.27314     -0.11173     80.45364
+DYNA INTERN>        0.00000      0.00000      0.00000      0.45467      0.00000
+DYNA EXTERN>       -0.32863     -2.83998      0.00000      0.00000      0.00000
+DYNA PRESS>        -0.00000    -53.63576      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+DYNA>   104000    104.00000      0.60041      1.93987     -1.33946    216.93099
+DYNA PROP>        109.33839      0.46130      1.90007     -0.13911   -348.21579
+DYNA INTERN>        0.00000      0.00000      0.00000      2.02173      0.00000
+DYNA EXTERN>       -0.44667     -2.91453      0.00000      0.00000      0.00000
+DYNA PRESS>         0.00000    232.14386      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+DYNA>   105000    105.00000     -0.69403      1.53746     -2.23149    171.93054
+DYNA PROP>         96.40587     -0.60434      1.50459      0.08969   -323.97020
+DYNA INTERN>        0.00000      0.00000      0.00000      0.59852      0.00000
+DYNA EXTERN>        0.01199     -2.84200      0.00000      0.00000      0.00000
+DYNA PRESS>         0.00000    215.98013      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+ DYNAMC> Averages for the last 5000 steps:
+AVER DYN: Step         Time      TOTEner        TOTKe       ENERgy  TEMPerature
+AVER PROP:             GRMS      HFCTote        HFCKe       EHFCor        VIRKe
+AVER INTERN:          BONDs       ANGLes       UREY-b    DIHEdrals    IMPRopers
+AVER EXTERN:        VDWaals         ELEC       HBONds          ASP         USER
+AVER PRESS:            VIRE         VIRI       PRESSE       PRESSI       VOLUme
+ ----------       ---------    ---------    ---------    ---------    ---------
+AVER>     5000    105.00000      1.16814      2.79367     -1.62553    312.40854
+AVER PROP>        104.01769      1.16657      2.78871     -0.00157     -1.51642
+AVER INTERN>        0.00000      0.00000      0.00000      1.50553      0.00000
+AVER EXTERN>       -0.30289     -2.82818      0.00000      0.00000      0.00000
+AVER PRESS>         0.00000      1.01095      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+ DYNAMC> RMS fluctuations for the last 5000 steps:
+FLUC>     5000    105.00000      1.64206      1.34985      0.90279    150.95015
+FLUC PROP>         19.47829      1.62170      1.28772      0.20741    180.52608
+FLUC INTERN>        0.00000      0.00000      0.00000      1.01387      0.00000
+FLUC EXTERN>        0.13939      0.26106      0.00000      0.00000      0.00000
+FLUC PRESS>         0.00000    120.35072      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+ DYNAMC> Averages for the last 105000 steps:
+LAVE>   105000    105.00000      2.46916      2.69058     -0.22142    300.87978
+LAVE PROP>        103.59392      2.46900      2.69005     -0.00016      2.29139
+LAVE INTERN>        0.00000      0.00000      0.00000      1.06295      0.00000
+LAVE EXTERN>       -0.09224     -1.19213      0.00000      0.00000      0.00000
+LAVE PRESS>         0.00000     -1.52759      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+ DYNAMC> RMS fluctuations for the last 105000 steps:
+LFLC>   105000    105.00000      1.70767      1.26712      1.17230    141.69883
+LFLC PROP>         19.59594      1.69103      1.20849      0.19930    183.08108
+LFLC INTERN>        0.00000      0.00000      0.00000      0.80623      0.00000
+LFLC EXTERN>        0.31969      0.87954      0.00000      0.00000      0.00000
+LFLC PRESS>         0.00000    122.05405      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+
+     DRIFT/STEP (LAST-TOTAL):    1.08083707E-04  -2.68387626E-05
+     E AT STEP 0            :    0.89630640        3.8780500    
+     CORR. COEFFICIENT      :    9.61985609E-02  -0.48107281    
+DYNA>   106000    106.00000      1.36667      4.29918     -2.93252    480.76610
+DYNA PROP>         96.66285      1.15737      4.20454     -0.20930   -162.45801
+DYNA INTERN>        0.00000      0.00000      0.00000      0.05402      0.00000
+DYNA EXTERN>       -0.34971     -2.63683      0.00000      0.00000      0.00000
+DYNA PRESS>         0.00000    108.30534      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+DYNA>   107000    107.00000     -0.02410      2.12916     -2.15326    238.09778
+DYNA PROP>        105.37112      0.02503      2.13702      0.04913    143.69434
+DYNA INTERN>        0.00000      0.00000      0.00000      0.97821      0.00000
+DYNA EXTERN>       -0.08304     -3.04843      0.00000      0.00000      0.00000
+DYNA PRESS>        -0.00000    -95.79623      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+DYNA>   108000    108.00000      3.75049      5.34951     -1.59902    598.22163
+DYNA PROP>        118.82122      3.23982      5.19102     -0.51067    -32.85134
+DYNA INTERN>        0.00000      0.00000      0.00000      1.93110      0.00000
+DYNA EXTERN>       -0.39126     -3.13886      0.00000      0.00000      0.00000
+DYNA PRESS>        -0.00000     21.90089      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+DYNA>   109000    109.00000     -0.89645      1.04381     -1.94026    116.72642
+DYNA PROP>         86.37405     -0.88124      1.05903      0.01521    -13.70650
+DYNA INTERN>        0.00000      0.00000      0.00000      2.66908      0.00000
+DYNA EXTERN>       -0.42678     -4.18256      0.00000      0.00000      0.00000
+DYNA PRESS>         0.00000      9.13767      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+DYNA>   110000    110.00000      3.10572      6.98285     -3.87713    780.87323
+DYNA PROP>         80.42581      3.19791      6.73930      0.09219    -75.85003
+DYNA INTERN>        0.00000      0.00000      0.00000      1.16510      0.00000
+DYNA EXTERN>       -0.01943     -5.02281      0.00000      0.00000      0.00000
+DYNA PRESS>         0.00000     50.56669      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+ DYNAMC> Averages for the last 5000 steps:
+AVER DYN: Step         Time      TOTEner        TOTKe       ENERgy  TEMPerature
+AVER PROP:             GRMS      HFCTote        HFCKe       EHFCor        VIRKe
+AVER INTERN:          BONDs       ANGLes       UREY-b    DIHEdrals    IMPRopers
+AVER EXTERN:        VDWaals         ELEC       HBONds          ASP         USER
+AVER PRESS:            VIRE         VIRI       PRESSE       PRESSI       VOLUme
+ ----------       ---------    ---------    ---------    ---------    ---------
+AVER>     5000    110.00000      0.74162      2.67113     -1.92951    298.70531
+AVER PROP>        103.66367      0.74143      2.67121     -0.00019      1.44292
+AVER INTERN>        0.00000      0.00000      0.00000      1.71778      0.00000
+AVER EXTERN>       -0.17742     -3.46987      0.00000      0.00000      0.00000
+AVER PRESS>         0.00000     -0.96195      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+ DYNAMC> RMS fluctuations for the last 5000 steps:
+FLUC>     5000    110.00000      1.72069      1.28429      1.11991    143.61898
+FLUC PROP>         19.44179      1.70304      1.22427      0.20095    172.47966
+FLUC INTERN>        0.00000      0.00000      0.00000      1.39449      0.00000
+FLUC EXTERN>        0.36777      0.99938      0.00000      0.00000      0.00000
+FLUC PRESS>         0.00000    114.98644      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+ DYNAMC> Averages for the last 110000 steps:
+LAVE>   110000    110.00000      2.39063      2.68969     -0.29906    300.78094
+LAVE PROP>        103.59709      2.39048      2.68920     -0.00016      2.25282
+LAVE INTERN>        0.00000      0.00000      0.00000      1.09271      0.00000
+LAVE EXTERN>       -0.09611     -1.29566      0.00000      0.00000      0.00000
+LAVE PRESS>         0.00000     -1.50188      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+ DYNAMC> RMS fluctuations for the last 110000 steps:
+LFLC>   110000    110.00000      1.74575      1.26791      1.22288    141.78739
+LFLC PROP>         19.58896      1.72943      1.20922      0.19938    182.61263
+LFLC INTERN>        0.00000      0.00000      0.00000      0.85291      0.00000
+LFLC EXTERN>        0.32252      1.00446      0.00000      0.00000      0.00000
+LFLC PRESS>         0.00000    121.74176      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+
+     DRIFT/STEP (LAST-TOTAL):    7.40655705E-05  -2.74243572E-05
+     E AT STEP 0            :    0.55622755        3.8988289    
+     CORR. COEFFICIENT      :    6.27725407E-02  -0.50354273    
+ WRIDYN: RESTart file was written at step  110000
+ VCLOSE: Closing unit   11 with status "KEEP"
+ PERTURBATION> Free energy perturbation results:
+ PERTURBATION> results, LSTART=    0.100000  LSTOP=    0.000000  LLAST=    0.050000 Number of steps used=      5000
+ PERTURBATION> result: EXPAVE=0.102859E+01 0.978225E+00 EXPFLC=0.828430E-01 0.749828E-01 DIFAVE=   -0.029868 DIFFLC=    0.093683
+ PERTURBATION> TP Windowing result, EPRTOT=   -1.475751 EFORWARD=   -0.177717 EBACKWARD=    0.174038 EPREFF=   -0.160913 EPREFB=    0.160913
+ PERTURBATION> TI Windowing result, EPRTOT=   -1.475763  EFORWARD=   -0.351694 EPREF=   -0.321826
+ PERTRES> LSTART  =     0.10000 LSTOP=     0.00000 EPRTOT=    -1.47576
+          EFORWARD=    -0.35169 EPREF=    -0.32183 DIFAVE=    -0.02987
+          DIFFLC  =     0.09368
+ PERTURBATION> Averages for the last     5000  steps:
+PAVE DYN: Step         Time      TOTEner        TOTKe       ENERgy  TEMPerature
+PAVE PROP:             GRMS      HFCTote        HFCKe       EHFCor        VIRKe
+PAVE INTERN:          BONDs       ANGLes       UREY-b    DIHEdrals    IMPRopers
+PAVE EXTERN:        VDWaals         ELEC       HBONds          ASP         USER
+PAVE PRESS:            VIRE         VIRI       PRESSE       PRESSI       VOLUme
+ ----------       ---------    ---------    ---------    ---------    ---------
+PAVE>     5000      0.00000     -0.35169     -0.00004     -0.35169      0.00000
+PAVE PROP>          0.00000      0.00000      0.00000      0.00000      0.00000
+PAVE INTERN>        0.00000      0.00000      0.00000      0.04184      0.00000
+PAVE EXTERN>       -0.02828     -0.36525      0.00000      0.00000      0.00000
+PAVE PRESS>         0.00000     -0.25709      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+ PERTURBATION> Fluctuations for the last     5000  steps:
+PFLC>     5000      0.00000      0.09372      0.00145      0.09368      0.00000
+PFLC PROP>          0.00000      0.00000      0.00000      0.00000      0.00000
+PFLC INTERN>        0.00000      0.00000      0.00000      0.04542      0.00000
+PFLC EXTERN>        0.00653      0.10520      0.00000      0.00000      0.00000
+PFLC PRESS>         0.00000      0.06516      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+ PERTURBATION> TOTALS since last reset:
+PTOT>     5000      0.00000     -1.47576     -0.00004     -1.47576      0.00000
+PTOT PROP>          0.00000      0.00000      0.00000      0.00000      0.00000
+PTOT INTERN>        0.00000      0.00000      0.00000      1.13202      0.00000
+PTOT EXTERN>        0.03119     -2.63897      0.00000      0.00000      0.00000
+PTOT PRESS>         0.00000     -0.43063      0.00000      0.00000      0.00000
+ ----------       ---------    ---------    ---------    ---------    ---------
+  
+  PUNIT>     
+  
+  PUNIT>    end
+ PERTURBATION> END command issued: PERT run terminated.
+
+     DETAILS ABOUT CENTRE OF MASS
+     POSITION          :    3.8273764      -8.01065873E-02    2.6922396    
+     VELOCITY          :   8.37339543E-02   0.10873645       1.58923379E-02
+     ANGULAR MOMENTUM  :   -2.9613474       -18.426627       -36.757094    
+     KINETIC ENERGY    :    1.1166220    
+  
+ CHARMM>     
+  
+ CHARMM>    STOP
+ VCLOSE: Closing unit   20 with status "KEEP"
+
+      $$$$$$  New timer profile Local node$$$$$
+
+   Shake Setup                     0.00 Other:            0.00
+   First List                      0.00 Other:            0.00
+   Shake time                      1.62 Other:            0.00
+      Comm coords                     0.11 Other:            0.00
+         Comm variables                  0.13 Other:            0.00
+         Save shake coords               2.31 Other:            0.00
+         Heuristic check                 0.11 Other:            0.00
+         Temp and virial calc            0.12 Other:            0.00
+      dynamc                          2.68 Other:            0.00
+   Dynamics total                  2.79 Other:            0.00
+   List time                       0.13 Other:            0.00
+      Nonbond force                   0.00 Other:            0.00
+         Bond energy                     0.00 Other:            0.00
+         Angle energy                    0.00 Other:            0.00
+         Dihedral energy                 0.00 Other:            0.00
+         Restraints energy               0.00 Other:            0.00
+      INTRNL energy                   0.88 Other:            0.88
+      Comm energy                     0.00 Other:            0.00
+      Comm force                      0.00 Other:            0.00
+   Energy time                     1.15 Other:            0.26
+ Total time                      5.78 Other:            0.09
+
+         $$$$$$  Average   profile $$$$$
+
+   Shake Setup                     0.00 Other:            0.00
+   First List                      0.00 Other:            0.00
+   Shake time                      1.62 Other:            0.00
+      Comm coords                     0.11 Other:            0.00
+         Comm variables                  0.13 Other:            0.00
+         Save shake coords               2.31 Other:            0.00
+         Heuristic check                 0.11 Other:            0.00
+         Temp and virial calc            0.12 Other:            0.00
+      dynamc                          2.68 Other:            0.00
+   Dynamics total                  2.79 Other:            0.00
+   List time                       0.13 Other:            0.00
+      Nonbond force                   0.00 Other:            0.00
+         Bond energy                     0.00 Other:            0.00
+         Angle energy                    0.00 Other:            0.00
+         Dihedral energy                 0.00 Other:            0.00
+         Restraints energy               0.00 Other:            0.00
+      INTRNL energy                   0.88 Other:            0.88
+      Comm energy                     0.00 Other:            0.00
+      Comm force                      0.00 Other:            0.00
+   Energy time                     1.15 Other:            0.26
+ Total time                      5.78 Other:            0.09
+
+                    NORMAL TERMINATION BY NORMAL STOP
+                    MOST SEVERE WARNING WAS AT LEVEL  1
+
+                    $$$$$ JOB ACCOUNTING INFORMATION $$$$$
+                     ELAPSED TIME:     5.78  SECONDS 
+                         CPU TIME:     5.77  SECONDS 

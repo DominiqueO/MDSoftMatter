@@ -1,0 +1,147 @@
+ PERTURBATION> TOTALS since last reset:
+*  PERTURBATION> TOTALS since last reset:
+* PTOT>        0      0.00000      0.00000      0.00000      0.00000      0.00000
+* PTOT PROP>          0.00000      0.00000      0.00000      0.00000      0.00000
+* PTOT PRESS>         0.00000      0.00000      0.00000      0.00000      0.00000
+*  ----------       ---------    ---------    ---------    ---------    ---------
+*  PERTURBATION> Auto mode ends: PERT run terminated.
+* ENER ENR:  Eval#     ENERgy      Delta-E         GRMS
+* ENER EXTERN:        VDWaals         ELEC       HBONds          ASP         USER
+*  ----------       ---------    ---------    ---------    ---------    ---------
+* ENER>        0      1.59934     -0.00000      0.00001
+* ENER EXTERN>       -0.28114      1.88047      0.00000      0.00000      0.00000
+*  ----------       ---------    ---------    ---------    ---------    ---------
+ PERTURBATION> TOTALS since last reset:
+*  PERTURBATION> TOTALS since last reset:
+* PTOT>        0      0.00000      0.00000      0.00000      0.00000      0.00000
+* PTOT PROP>          0.00000      0.00000      0.00000      0.00000      0.00000
+* PTOT PRESS>         0.00000      0.00000      0.00000      0.00000      0.00000
+*  ----------       ---------    ---------    ---------    ---------    ---------
+*   
+*  CHARMM>     
+*   
+*  CHARMM>    OPEN UNIT 11 WRITe FORMatted NAME scratch/junk_a.rst
+*  VOPEN> Attempting to open::scratch/junk_a.rst::
+*  OPNLGU> Unit 11 opened for WRITE access to /home/ostermayer/md/lab9/scratch/junk_a.rst
+*   
+*  CHARMM>    OPEN UNIT 20 READ  FORMatted NAME pert.inp
+*  VOPEN> Attempting to open::pert.inp::
+*  OPNLGU> Unit 20 opened for READONLY access to /home/ostermayer/md/lab9/pert.inp
+*   
+*  CHARMM>     
+*   
+*  CHARMM>    ! setup and run the Thermodynamic Integration loop using Langevine
+*  CHARMM>    ! Dynamics.
+*  CHARMM>     
+*   
+*  CHARMM>    SCALar FBETA SET 100 SELEct ( ALL ) END
+*  SELRPN>      6 atoms have been selected out of      6
+*   
+*  CHARMM>     
+*   
+*  CHARMM>    DYNAmics LEAPfrog LANGevine START -
+*  CHARMM>             NSTEp 110000  TIMEst .001  NPRInt 1000  IPRFrq 5000 -
+*  CHARMM>    	 FIRStt   240. FINAlt  300. -
+*  CHARMM>             PUNIt     20  ISEEd  6636  -
+*  CHARMM>    	 IUNCrd    -1  IUNRead  10  IUNWrite 11  -
+*  CHARMM>             ILBFrq    10  RBUFfer 0.0  TBATh   300. INBFrq 0
+*   IUNREA = 10         IUNWRI = 11          IUNOS = -1
+*   IUNCRD = -1         IUNVEL = -1          KUNIT = -1
+*  WARNING FROM DECODI - COULD NOT CONVERT STRING
+*  0.0
+* ZERO WILL BE RETURNED.
+* 
+*       ***** LEVEL  5 WARNING FROM <RNGMODSEEDS> *****
+*       ***** Only one seed number specified! See random.doc for syntax.
+*       ******************************************
+*       BOMLEV (  0) IS NOT REACHED. WRNLEV IS  5
+* 
+*  TITLE> * BASIC "punit" FILE FOR WINDOWING
+*  TITLE> *
+*   
+PAVE DYN: Step         Time      TOTEner        TOTKe       ENERgy  TEMPerature
+X PAVE DYN: Step         Time      TOTEner        TOTKe       ENERgy  TEMPerature
+X PAVE PROP:             GRMS      HFCTote        HFCKe       EHFCor        VIRKe
+X PAVE EXTERN:        VDWaals         ELEC       HBONds          ASP         USER
+X PAVE PRESS:            VIRE         VIRI       PRESSE       PRESSI       VOLUme
+X  ----------       ---------    ---------    ---------    ---------    ---------
+ PERTURBATION> TOTALS since last reset:
+*  PERTURBATION> TOTALS since last reset:
+* PTOT>     5000      0.00000     -0.32850     -0.00007     -0.32850      0.00000
+* PTOT PROP>          0.00000      0.00000      0.00000      0.00000      0.00000
+* PTOT EXTERN>        0.32589     -0.65439      0.00000      0.00000      0.00000
+* PTOT PRESS>         0.00000      1.09834      0.00000      0.00000      0.00000
+*  ----------       ---------    ---------    ---------    ---------    ---------
+*   
+ PERTURBATION> TOTALS since last reset:
+*  PERTURBATION> TOTALS since last reset:
+* PTOT>     5000      0.00000     -0.81335     -0.00006     -0.81335      0.00000
+* PTOT PROP>          0.00000      0.00000      0.00000      0.00000      0.00000
+* PTOT EXTERN>        0.56949     -1.38284      0.00000      0.00000      0.00000
+* PTOT PRESS>         0.00000      1.79412      0.00000      0.00000      0.00000
+*  ----------       ---------    ---------    ---------    ---------    ---------
+*   
+ PERTURBATION> TOTALS since last reset:
+*  PERTURBATION> TOTALS since last reset:
+* PTOT>     5000      0.00000     -1.34514     -0.00006     -1.34514      0.00000
+* PTOT PROP>          0.00000      0.00000      0.00000      0.00000      0.00000
+* PTOT EXTERN>        0.75515     -2.10029      0.00000      0.00000      0.00000
+* PTOT PRESS>         0.00000      2.24295      0.00000      0.00000      0.00000
+*  ----------       ---------    ---------    ---------    ---------    ---------
+*   
+ PERTURBATION> TOTALS since last reset:
+*  PERTURBATION> TOTALS since last reset:
+* PTOT>     5000      0.00000     -1.84397     -0.00006     -1.84397      0.00000
+* PTOT PROP>          0.00000      0.00000      0.00000      0.00000      0.00000
+* PTOT EXTERN>        0.98614     -2.83011      0.00000      0.00000      0.00000
+* PTOT PRESS>         0.00000      2.88625      0.00000      0.00000      0.00000
+*  ----------       ---------    ---------    ---------    ---------    ---------
+*   
+ PERTURBATION> TOTALS since last reset:
+*  PERTURBATION> TOTALS since last reset:
+* PTOT>     5000      0.00000     -2.42171     -0.00004     -2.42171      0.00000
+* PTOT PROP>          0.00000      0.00000      0.00000      0.00000      0.00000
+* PTOT EXTERN>        1.13766     -3.55937      0.00000      0.00000      0.00000
+* PTOT PRESS>         0.00000      3.17840      0.00000      0.00000      0.00000
+*  ----------       ---------    ---------    ---------    ---------    ---------
+*   
+ PERTURBATION> TOTALS since last reset:
+*  PERTURBATION> TOTALS since last reset:
+* PTOT>     5000      0.00000     -3.05243     -0.00003     -3.05243      0.00000
+* PTOT PROP>          0.00000      0.00000      0.00000      0.00000      0.00000
+* PTOT EXTERN>        1.27927     -4.33170      0.00000      0.00000      0.00000
+* PTOT PRESS>         0.00000      3.40658      0.00000      0.00000      0.00000
+*  ----------       ---------    ---------    ---------    ---------    ---------
+*   
+ PERTURBATION> TOTALS since last reset:
+*  PERTURBATION> TOTALS since last reset:
+* PTOT>     5000      0.00000     -3.41713     -0.00003     -3.41713      0.00000
+* PTOT PROP>          0.00000      0.00000      0.00000      0.00000      0.00000
+* PTOT EXTERN>        1.43644     -4.85357      0.00000      0.00000      0.00000
+* PTOT PRESS>         0.00000      3.85734      0.00000      0.00000      0.00000
+*  ----------       ---------    ---------    ---------    ---------    ---------
+*   
+ PERTURBATION> TOTALS since last reset:
+*  PERTURBATION> TOTALS since last reset:
+* PTOT>     5000      0.00000     -3.77460     -0.00002     -3.77460      0.00000
+* PTOT PROP>          0.00000      0.00000      0.00000      0.00000      0.00000
+* PTOT EXTERN>        1.58787     -5.36248      0.00000      0.00000      0.00000
+* PTOT PRESS>         0.00000      4.28513      0.00000      0.00000      0.00000
+*  ----------       ---------    ---------    ---------    ---------    ---------
+*   
+ PERTURBATION> TOTALS since last reset:
+*  PERTURBATION> TOTALS since last reset:
+* PTOT>     5000      0.00000     -4.16322     -0.00002     -4.16322      0.00000
+* PTOT PROP>          0.00000      0.00000      0.00000      0.00000      0.00000
+* PTOT EXTERN>        1.72173     -5.88495      0.00000      0.00000      0.00000
+* PTOT PRESS>         0.00000      4.63059      0.00000      0.00000      0.00000
+*  ----------       ---------    ---------    ---------    ---------    ---------
+*   
+ PERTURBATION> TOTALS since last reset:
+*  PERTURBATION> TOTALS since last reset:
+* PTOT>     5000      0.00000     -5.21255     -0.00015     -5.21255      0.00000
+* PTOT PROP>          0.00000      0.00000      0.00000      0.00000      0.00000
+* PTOT EXTERN>        1.83903     -7.05158      0.00000      0.00000      0.00000
+* PTOT PRESS>         0.00000      4.54342      0.00000      0.00000      0.00000
+*  ----------       ---------    ---------    ---------    ---------    ---------
+*   
